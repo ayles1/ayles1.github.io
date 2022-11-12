@@ -1,0 +1,42 @@
+@font-face {
+  font-family: "SF Pro Display Regular";
+  src: url("/fonts/SFProDisplay-Regular.woff") format("woff");
+  font-style: normal;
+  font-weight: 400;
+}
+@font-face {
+  font-family: "SF Pro Display Bold";
+  src: url("/fonts/SFProDisplay-Bold.woff") format("woff");
+  font-style: normal;
+  font-weight: 700;
+}
+body {
+  color: #2f3035;
+}
+
+.wrapper {
+  overflow: hidden;
+}
+
+.container {
+  max-width: 1170px;
+  margin: 0 auto;
+}
+
+.page__container {
+  padding: 50px 0px;
+  font-family: "SF Pro Display Bold";
+  font-size: 20px;
+}
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.header__current-location {
+  display: flex;
+}
+.navbar__items {
+  display: flex;
+  gap: 50px;
+}/*# sourceMappingURL=style.css.map */

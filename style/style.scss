@@ -1,0 +1,77 @@
+@font-face {
+  font-family: "SF Pro Display Regular";
+  src: url("/fonts/SFProDisplay-Regular.woff") format("woff");
+  font-style: normal;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "SF Pro Display Bold";
+  src: url("/fonts/SFProDisplay-Bold.woff") format("woff");
+  font-style: normal;
+  font-weight: 700;
+}
+$regular: "SF Pro Display Regular";
+$bold: "SF Pro Display Bold";
+
+$main-text: #2f3035;
+$accent: #1c62cd;
+$basic: #f0f0f4;
+$light-grey-text: #c4c4c4;
+
+body {
+  color: $main-text;
+}
+.wrapper {
+  overflow: hidden;
+}
+.container {
+  max-width: 1170px;
+  margin: 0 auto;
+}
+.page {
+  &__container {
+    padding: 50px 0px;
+    font-family: $bold;
+    font-size: 20px;
+  }
+
+  &__header {
+  }
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  &__navbar {
+  }
+
+  &__logo {
+  }
+
+  &__current-location {
+    display: flex;
+  }
+
+  &__user {
+  }
+}
+.navbar {
+  &__items {
+    display: flex;
+    gap: 50px;
+  }
+}
+.address {
+}
+.user {
+  &__favorite {
+  }
+
+  &__profile {
+  }
+
+  &__cart {
+  }
+}
