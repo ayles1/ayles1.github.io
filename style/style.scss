@@ -13,6 +13,7 @@
 }
 $regular: "SF Pro Display Regular";
 $bold: "SF Pro Display Bold";
+$barlow: "Barlow";
 
 $main-text: #2f3035;
 $accent: #1c62cd;
@@ -21,6 +22,7 @@ $light-grey-text: #c4c4c4;
 
 body {
   color: $main-text;
+  font-family: $regular;
 }
 .wrapper {
   overflow: hidden;
@@ -31,8 +33,7 @@ body {
 }
 .page {
   &__container {
-    padding: 50px 0px;
-    font-family: $bold;
+    padding: 50px 0px 0 0;
     font-size: 20px;
   }
 
@@ -41,9 +42,11 @@ body {
 }
 
 .header {
+  font-family: $bold;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 20px;
   &__navbar {
   }
 
@@ -62,6 +65,9 @@ body {
     display: flex;
     gap: 50px;
   }
+  &__item {
+    cursor: pointer;
+  }
 }
 .address {
 }
@@ -74,4 +80,347 @@ body {
 
   &__cart {
   }
+}
+.products {
+  &__navbar {
+    font-family: $regular;
+    background-color: $basic;
+  }
+}
+.navbar {
+  &__list {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 0;
+    margin-bottom: 80px;
+    &__item a {
+      color: $main-text;
+    }
+    &__item a:hover {
+      font-family: $bold;
+      text-decoration: underline $accent;
+    }
+  }
+}
+
+.preview {
+  display: flex;
+  gap: 35px;
+  margin-bottom: 80px;
+  &__slider {
+  }
+
+  &__sale {
+    border: 1px solid #cdcdcd;
+  }
+}
+.slider {
+  & img {
+    object-fit: cover;
+    background-size: cover;
+    max-width: 100%;
+    min-height: 100%;
+  }
+}
+.sale {
+  &__card {
+  }
+
+  &__date {
+    background-color: $basic;
+    padding: 25px 25px 55px 25px;
+    text-align: center;
+    & span {
+      font-family: $barlow;
+      font-weight: 700;
+      color: $accent;
+    }
+  }
+}
+.card {
+  &__header {
+    font-family: $barlow;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+
+  &__alert {
+    background-color: $accent;
+    color: $basic;
+    padding: 8px 20px;
+  }
+
+  &__price {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 7px;
+    padding: 10px 10px 0 0;
+    &_current {
+      color: $accent;
+      font-size: 27px;
+      font-weight: 700;
+    }
+
+    &_previous {
+      color: $light-grey-text;
+      font-size: 14px;
+    }
+  }
+
+  &__main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 7px;
+  }
+
+  &__description {
+    font-size: 18px;
+    font-family: $bold;
+    text-align: center;
+  }
+}
+
+.search {
+  &__container {
+  }
+
+  &__type {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 25px;
+    &__item {
+      & button {
+        background-color: inherit;
+        font-size: 20px;
+      }
+    }
+  }
+
+  &__form {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 80px;
+    & input {
+      background-color: $basic;
+      width: 100%;
+      font-size: 20px;
+    }
+    & button {
+      background-color: $accent;
+      font-family: $bold;
+      color: white;
+      font-size: 14px;
+      padding: 15px 40px;
+      letter-spacing: 0.12em;
+    }
+  }
+
+  &__cards {
+    display: grid;
+    grid-template: repeat(2, 1fr) / repeat(3, 1fr);
+    gap: 30px;
+    margin-bottom: 80px;
+    &__item {
+      max-height: 130px;
+      display: flex;
+      justify-content: space-between;
+      border: 1px solid #cdcdcd;
+      padding: 20px;
+      & p {
+        color: $main-text;
+        font-family: $barlow;
+        font-weight: 700;
+      }
+      & div {
+        color: $light-grey-text;
+        cursor: pointer;
+      }
+      & img {
+      }
+    }
+  }
+}
+.item {
+  &__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+}
+
+.popular {
+  margin-bottom: 90px;
+  &__text {
+    font-family: $barlow;
+    font-weight: 700;
+    font-size: 25px;
+    margin-bottom: 25px;
+  }
+
+  &__types {
+    display: flex;
+    gap: 50px;
+    margin-bottom: 35px;
+    &__item {
+      &:hover {
+        border-bottom: 2px solid $accent;
+      }
+      font-size: 15px;
+    }
+  }
+
+  &__list {
+  }
+  &__more {
+    text-align: center;
+    & button {
+      padding: 15px 40px;
+      font-size: 15px;
+      letter-spacing: 0.12rem;
+    }
+  }
+}
+.list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+  &__item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: 1px solid #cdcdcd;
+    padding: 20px;
+    margin-bottom: 35px;
+    &:hover {
+      box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
+        0 10px 10px rgba(0, 0, 0, 0.22);
+    }
+  }
+}
+.item {
+  &_addtocart {
+    text-align: end;
+    & button {
+      padding: 10px;
+      background-color: $accent;
+    }
+  }
+
+  &__like {
+    text-align: end;
+    cursor: pointer;
+  }
+
+  &__img {
+    text-align: center;
+    margin-bottom: 15px;
+  }
+
+  &__name {
+    text-align: center;
+    font-size: 18px;
+    margin-bottom: 25px;
+  }
+
+  &__price {
+    text-align: center;
+    font-family: $barlow;
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 36px;
+  }
+}
+.advert {
+  background-color: $accent;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  margin-bottom: 70px;
+  &__text {
+    color: white;
+    font-family: $bold;
+    line-height: 36px;
+    font-size: 36px;
+  }
+
+  &__button {
+    & button {
+      background-color: white;
+      padding: 0 40px;
+      font-size: 24px;
+      line-height: 50px;
+    }
+  }
+}
+
+.footer {
+  background-color: $basic;
+  display: flex;
+  justify-content: space-between;
+  padding: 40px 80px 30px 20px;
+  &__spam {
+  }
+
+  &__info {
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    & :first-child {
+      font-family: $bold;
+    }
+    & :last-child {
+      margin-top: 45px;
+      color: #48494d;
+    }
+  }
+
+  &__shop {
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    & :first-child {
+      font-family: $bold;
+    }
+    & :last-child {
+      margin-top: 45px;
+      color: #48494d;
+    }
+  }
+
+  &__socials {
+    align-self: center;
+    display: flex;
+    gap: 15px;
+  }
+}
+.spam {
+  &__text {
+    font-size: 14px;
+    font-family: $bold;
+    margin-bottom: 35px;
+  }
+
+  &__form {
+    min-height: 30px;
+    display: flex;
+    & input {
+      height: 100%;
+    }
+    & button {
+      height: 100%;
+      background-color: $accent;
+      font-size: 11px;
+      color: white;
+      padding: 10px 15px;
+    }
+  }
+}
+.info {
+}
+.shop {
 }

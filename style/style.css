@@ -12,6 +12,7 @@
 }
 body {
   color: #2f3035;
+  font-family: "SF Pro Display Regular";
 }
 
 .wrapper {
@@ -24,14 +25,15 @@ body {
 }
 
 .page__container {
-  padding: 50px 0px;
-  font-family: "SF Pro Display Bold";
+  padding: 50px 0px 0 0;
   font-size: 20px;
 }
 .header {
+  font-family: "SF Pro Display Bold";
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 20px;
 }
 .header__current-location {
   display: flex;
@@ -39,4 +41,301 @@ body {
 .navbar__items {
   display: flex;
   gap: 50px;
+}
+.navbar__item {
+  cursor: pointer;
+}
+
+.products__navbar {
+  font-family: "SF Pro Display Regular";
+  background-color: #f0f0f4;
+}
+
+.navbar__list {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 0;
+  margin-bottom: 80px;
+}
+.navbar__list__item a {
+  color: #2f3035;
+}
+.navbar__list__item a:hover {
+  font-family: "SF Pro Display Bold";
+  -webkit-text-decoration: underline #1c62cd;
+          text-decoration: underline #1c62cd;
+}
+
+.preview {
+  display: flex;
+  gap: 35px;
+  margin-bottom: 80px;
+}
+.preview__sale {
+  border: 1px solid #cdcdcd;
+}
+
+.slider img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  background-size: cover;
+  max-width: 100%;
+  min-height: 100%;
+}
+
+.sale__date {
+  background-color: #f0f0f4;
+  padding: 25px 25px 55px 25px;
+  text-align: center;
+}
+.sale__date span {
+  font-family: "Barlow";
+  font-weight: 700;
+  color: #1c62cd;
+}
+
+.card__header {
+  font-family: "Barlow";
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+.card__alert {
+  background-color: #1c62cd;
+  color: #f0f0f4;
+  padding: 8px 20px;
+}
+.card__price {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 7px;
+  padding: 10px 10px 0 0;
+}
+.card__price_current {
+  color: #1c62cd;
+  font-size: 27px;
+  font-weight: 700;
+}
+.card__price_previous {
+  color: #c4c4c4;
+  font-size: 14px;
+}
+.card__main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 7px;
+}
+.card__description {
+  font-size: 18px;
+  font-family: "SF Pro Display Bold";
+  text-align: center;
+}
+
+.search__type {
+  display: flex;
+  gap: 30px;
+  margin-bottom: 25px;
+}
+.search__type__item button {
+  background-color: inherit;
+  font-size: 20px;
+}
+.search__form {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 80px;
+}
+.search__form input {
+  background-color: #f0f0f4;
+  width: 100%;
+  font-size: 20px;
+}
+.search__form button {
+  background-color: #1c62cd;
+  font-family: "SF Pro Display Bold";
+  color: white;
+  font-size: 14px;
+  padding: 15px 40px;
+  letter-spacing: 0.12em;
+}
+.search__cards {
+  display: grid;
+  grid-template: repeat(2, 1fr)/repeat(3, 1fr);
+  gap: 30px;
+  margin-bottom: 80px;
+}
+.search__cards__item {
+  max-height: 130px;
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid #cdcdcd;
+  padding: 20px;
+}
+.search__cards__item p {
+  color: #2f3035;
+  font-family: "Barlow";
+  font-weight: 700;
+}
+.search__cards__item div {
+  color: #c4c4c4;
+  cursor: pointer;
+}
+.item__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.popular {
+  margin-bottom: 90px;
+}
+.popular__text {
+  font-family: "Barlow";
+  font-weight: 700;
+  font-size: 25px;
+  margin-bottom: 25px;
+}
+.popular__types {
+  display: flex;
+  gap: 50px;
+  margin-bottom: 35px;
+}
+.popular__types__item {
+  font-size: 15px;
+}
+.popular__types__item:hover {
+  border-bottom: 2px solid #1c62cd;
+}
+.popular__more {
+  text-align: center;
+}
+.popular__more button {
+  padding: 15px 40px;
+  font-size: 15px;
+  letter-spacing: 0.12rem;
+}
+
+.list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+}
+.list__item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: 1px solid #cdcdcd;
+  padding: 20px;
+  margin-bottom: 35px;
+}
+.list__item:hover {
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+
+.item_addtocart {
+  text-align: end;
+}
+.item_addtocart button {
+  padding: 10px;
+  background-color: #1c62cd;
+}
+.item__like {
+  text-align: end;
+  cursor: pointer;
+}
+.item__img {
+  text-align: center;
+  margin-bottom: 15px;
+}
+.item__name {
+  text-align: center;
+  font-size: 18px;
+  margin-bottom: 25px;
+}
+.item__price {
+  text-align: center;
+  font-family: "Barlow";
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 36px;
+}
+
+.advert {
+  background-color: #1c62cd;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  margin-bottom: 70px;
+}
+.advert__text {
+  color: white;
+  font-family: "SF Pro Display Bold";
+  line-height: 36px;
+  font-size: 36px;
+}
+.advert__button button {
+  background-color: white;
+  padding: 0 40px;
+  font-size: 24px;
+  line-height: 50px;
+}
+
+.footer {
+  background-color: #f0f0f4;
+  display: flex;
+  justify-content: space-between;
+  padding: 40px 80px 30px 20px;
+}
+.footer__info {
+  font-size: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.footer__info :first-child {
+  font-family: "SF Pro Display Bold";
+}
+.footer__info :last-child {
+  margin-top: 45px;
+  color: #48494d;
+}
+.footer__shop {
+  font-size: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.footer__shop :first-child {
+  font-family: "SF Pro Display Bold";
+}
+.footer__shop :last-child {
+  margin-top: 45px;
+  color: #48494d;
+}
+.footer__socials {
+  align-self: center;
+  display: flex;
+  gap: 15px;
+}
+
+.spam__text {
+  font-size: 14px;
+  font-family: "SF Pro Display Bold";
+  margin-bottom: 35px;
+}
+.spam__form {
+  min-height: 30px;
+  display: flex;
+}
+.spam__form input {
+  height: 100%;
+}
+.spam__form button {
+  height: 100%;
+  background-color: #1c62cd;
+  font-size: 11px;
+  color: white;
+  padding: 10px 15px;
 }/*# sourceMappingURL=style.css.map */
