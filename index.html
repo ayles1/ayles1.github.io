@@ -15,49 +15,10 @@
   <body>
     <div class="wrapper">
       <div class="page__container container">
-        <header class="page__header header">
-          <nav class="header__navbar navbar">
-            <ul class="navbar__items">
-              <li class="navbar__item">Магазины</li>
-              <li class="navbar__item">Акции</li>
-              <li class="navbar__item">Доставка и оплата</li>
-            </ul>
-          </nav>
-          <div class="header__logo">
-            <img src="/images/icons/Logo.svg" alt="Logo" />
-          </div>
-          <div class="header__current-location">
-            <img src="/images/icons/location.svg" alt="#" />
-            <div class="address">Москва, ул.Науки 25</div>
-          </div>
-          <div class="header__user user">
-            <a href="#" class="user__favorite"
-              ><img src="/images/icons/favorite.svg" alt=""
-            /></a>
-            <a href="#" class="user__profile"
-              ><img src="/images/icons/account.svg" alt=""
-            /></a>
-            <a href="#" class="user__cart"
-              ><img src="/images/icons/cart.svg" alt=""
-            /></a>
-          </div>
-        </header>
-        <nav class="products__navbar navbar">
-          <ul class="navbar__list">
-            <li class="navbar__list__item"><a href="#">Квадроциклы</a></li>
-            <li class="navbar__list__item"><a href="#">Катера</a></li>
-            <li class="navbar__list__item"><a href="#">Гидроциклы</a></li>
-            <li class="navbar__list__item"><a href="#">Лодки</a></li>
-            <li class="navbar__list__item"><a href="#">Вездеходы</a></li>
-            <li class="navbar__list__item"><a href="#">Снегоходы</a></li>
-            <li class="navbar__list__item"><a href="#">Двигатели</a></li>
-            <li class="navbar__list__item"><a href="#">Запчасти</a></li>
-          </ul>
-        </nav>
+        <header class="page__header header"></header>
+        <nav class="products__navbar navbar"></nav>
         <div class="preview">
-          <div class="preview__slider slider">
-            <img src="/images/other/слайдер баннер.jpg" alt="" />
-          </div>
+          <div class="preview__slider slider" id="slider"></div>
           <div class="preview__sale sale">
             <div class="sale__card card">
               <div class="card__header">
@@ -256,14 +217,31 @@
             <div class="">Политика обработки персональных данных</div>
           </div>
           <div class="footer__socials">
-            <img src="/images/icons/instagram-sketched (1) 1.svg" alt="" />
-            <img src="/images/icons/vk 1.svg" alt="" />
-            <img src="/images/icons/facebook 1.svg" alt="" />
-            <img src="/images/icons/youtube 1.svg" alt="" />
+            <a href="https:/instagram.com" target="_blank">
+              <img src="/images/icons/instagram-sketched (1) 1.svg" alt="" />
+            </a>
+            <a href="http://vk.com" target="_blank" rel="noopener noreferrer">
+              <img src="/images/icons/vk 1.svg" alt="" />
+            </a>
+            <a
+              href="http://facebook.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img src="/images/icons/facebook 1.svg" alt="" />
+            </a>
+            <a
+              href="http://youtube.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img src="/images/icons/youtube 1.svg" alt="" />
+            </a>
           </div>
         </footer>
       </div>
     </div>
-    <script src="index.js"></script>
+    <script src="/js/index.js"></script>
+    <script src="/js/slider.js"></script>
   </body>
 </html>
