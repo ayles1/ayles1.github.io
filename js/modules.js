@@ -48,60 +48,60 @@ function renderNavbar() {
 }
 
 function renderFooter() {
-  const footer = document.querySelector("footer");
-  footer.insertAdjacentHTML(
-    "afterbegin",
-    `<div class="footer__spam spam">
-    <div class="spam__text">
-      Подпишитесь на нашу рассылку <br />
-      и узнавайте о акция быстрее
+  const page = document.querySelector(".page__container");
+  const footer = document.createElement("footer");
+  footer.classList.add("footer");
+  footer.innerHTML = `<div class="footer__spam spam">
+  <div class="spam__text">
+    Подпишитесь на нашу рассылку <br />
+    и узнавайте о акция быстрее
+  </div>
+  <form action="" class="spam__form">
+    <div class="input">
+      <input type="text" placeholder="Введите ваш e-mail" />
     </div>
-    <form action="" class="spam__form">
-      <div class="input">
-        <input type="text" placeholder="Введите ваш e-mail" />
-      </div>
-      <div class="button"><button>Отправить</button></div>
-    </form>
-  </div>
-  <div class="footer__info info">
-    <div class="">Информация</div>
-    <div class="">О компании</div>
-    <div class="">Контакты</div>
-    <div class="">Акции</div>
-    <div class="">Магазины</div>
-    <div class="">Договор оферты</div>
-  </div>
-  <div class="footer__shop shop">
-    <div class="">Интернет-магазин</div>
-    <div class="">Доставка и самовывоз</div>
-    <div class="">Оплата</div>
-    <div class="">Возврат-обмен</div>
-    <div class="">Новости</div>
-    <div class="">Политика обработки персональных данных</div>
-  </div>
-  <div class="footer__socials">
-    <a href="https:/instagram.com" target="_blank">
-      <img src="/images/icons/instagram-sketched (1) 1.svg" alt="" />
-    </a>
-    <a href="http://vk.com" target="_blank" rel="noopener noreferrer">
-      <img src="/images/icons/vk 1.svg" alt="" />
-    </a>
-    <a
-      href="http://facebook.com"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      <img src="/images/icons/facebook 1.svg" alt="" />
-    </a>
-    <a
-      href="http://youtube.com"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      <img src="/images/icons/youtube 1.svg" alt="" />
-    </a>
-  </div>`
-  );
+    <div class="button"><button>Отправить</button></div>
+  </form>
+</div>
+<div class="footer__info info">
+  <div class="">Информация</div>
+  <div class="">О компании</div>
+  <div class="">Контакты</div>
+  <div class="">Акции</div>
+  <div class="">Магазины</div>
+  <div class="">Договор оферты</div>
+</div>
+<div class="footer__shop shop">
+  <div class="">Интернет-магазин</div>
+  <div class="">Доставка и самовывоз</div>
+  <div class="">Оплата</div>
+  <div class="">Возврат-обмен</div>
+  <div class="">Новости</div>
+  <div class="">Политика обработки персональных данных</div>
+</div>
+<div class="footer__socials">
+  <a href="https:/instagram.com" target="_blank">
+    <img src="/images/icons/instagram-sketched (1) 1.svg" alt="" />
+  </a>
+  <a href="http://vk.com" target="_blank" rel="noopener noreferrer">
+    <img src="/images/icons/vk 1.svg" alt="" />
+  </a>
+  <a
+    href="http://facebook.com"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    <img src="/images/icons/facebook 1.svg" alt="" />
+  </a>
+  <a
+    href="http://youtube.com"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    <img src="/images/icons/youtube 1.svg" alt="" />
+  </a>
+</div>`;
+  page.insertAdjacentElement("beforeend", footer);
 }
 
 export { renderHeader, renderNavbar, renderFooter };

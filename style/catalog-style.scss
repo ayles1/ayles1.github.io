@@ -1,0 +1,372 @@
+//--------------Preparing fonts and constants------------------------------------
+@font-face {
+  font-family: "SF Pro Display Regular";
+  src: url("/fonts/SFProDisplay-Regular.woff") format("woff");
+  font-style: normal;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "SF Pro Display Bold";
+  src: url("/fonts/SFProDisplay-Bold.woff") format("woff");
+  font-style: normal;
+  font-weight: 700;
+}
+$regular: "SF Pro Display Regular";
+$bold: "SF Pro Display Bold";
+$barlow: "Barlow";
+
+$main-text: #2f3035;
+$accent: #1c62cd;
+$basic: #f0f0f4;
+$light-grey-text: #c4c4c4;
+//-------------------------------------------------------------------
+
+//-------------------Main page styles--------------------------------
+body {
+  color: $main-text;
+  font-family: $regular;
+}
+.wrapper {
+  overflow: hidden;
+}
+.container {
+  max-width: 1170px;
+  margin: 0 auto;
+}
+//-----------------------------------------------------------------
+
+//----------------Header(repeated)---------------------------------
+.header {
+  font-family: $bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  &__navbar {
+  }
+
+  &__logo {
+  }
+
+  &__current-location {
+    display: flex;
+  }
+
+  &__user {
+  }
+}
+.nav {
+  &__items {
+    display: flex;
+    gap: 50px;
+  }
+  &__item {
+    cursor: pointer;
+  }
+}
+.address {
+}
+.user {
+  &__favorite {
+  }
+
+  &__profile {
+  }
+
+  &__cart {
+  }
+}
+.products {
+  &__navbar {
+    font-family: $regular;
+    // background-color: $basic;
+  }
+}
+//-----------------------------------------------------------------
+//----------------Navbar(repeated)---------------------------------
+.navbar {
+  &__list {
+    background-color: $basic;
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 0;
+    margin-bottom: 80px;
+    &__item a {
+      color: $main-text;
+    }
+    &__item a:hover {
+      font-family: $bold;
+      text-decoration: underline $accent;
+    }
+  }
+}
+//-----------------------------------------------------------------
+
+//----------------------------------------Footer------------------
+.footer {
+  background-color: $basic;
+  display: flex;
+  justify-content: space-between;
+  padding: 40px 80px 30px 20px;
+  &__spam {
+  }
+
+  &__info {
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    & div {
+      cursor: pointer;
+    }
+    & :first-child {
+      font-family: $bold;
+      cursor: inherit;
+    }
+    & :last-child {
+      margin-top: 45px;
+      color: #48494d;
+    }
+  }
+
+  &__shop {
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    & div {
+      cursor: pointer;
+    }
+    & :first-child {
+      font-family: $bold;
+      cursor: inherit;
+    }
+    & :last-child {
+      margin-top: 45px;
+      color: #48494d;
+    }
+  }
+
+  &__socials {
+    align-self: center;
+    display: flex;
+    gap: 15px;
+  }
+}
+.spam {
+  &__text {
+    font-size: 14px;
+    font-family: $bold;
+    margin-bottom: 35px;
+  }
+
+  &__form {
+    min-height: 30px;
+    display: flex;
+    & input {
+      height: 100%;
+    }
+    & button {
+      height: 100%;
+      background-color: $accent;
+      font-size: 11px;
+      color: white;
+      padding: 10px 15px;
+    }
+  }
+}
+.info {
+}
+.shop {
+}
+//----------------------------------------------------------------
+
+//-----------------------Main page and filters---------------------
+.products {
+  &__name {
+    font-family: $bold;
+    font-size: 30px;
+    line-height: 35px;
+    margin-bottom: 25px;
+  }
+
+  &__filters {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 50px;
+  }
+
+  &__main {
+  }
+}
+.filters {
+  &__item {
+    & ul {
+      display: flex;
+      gap: 10px;
+    }
+    &_name {
+    }
+  }
+}
+.select {
+  font-size: 14px;
+  background-color: $basic;
+  text-align: center;
+  padding: 5px 20px;
+  color: rgba($color: #000000, $alpha: 0.7);
+  & option {
+  }
+}
+.filter {
+  &__by-grid {
+  }
+
+  &__by-list {
+  }
+}
+.main {
+  display: flex;
+  gap: 30px;
+  &__params {
+  }
+  &__list {
+  }
+}
+.params {
+  font-size: 16px;
+  &__name {
+    text-align: center;
+    font-family: $bold;
+    letter-spacing: 0.09em;
+    margin-bottom: 50px;
+  }
+
+  &__availability {
+    margin-bottom: 40px;
+  }
+
+  &__price {
+    margin-bottom: 40px;
+    & input {
+      width: 100%;
+      margin-bottom: 20px;
+    }
+
+    & p {
+      font-family: $bold;
+      margin-bottom: 20px;
+    }
+  }
+  .availability {
+    &__name {
+      font-family: $bold;
+      margin-bottom: 20px;
+    }
+    &__inputs {
+      display: flex;
+      gap: 40px;
+    }
+  }
+  &__power {
+    margin-bottom: 40px;
+    & div {
+      display: flex;
+      justify-content: space-between;
+    }
+    & p {
+      font-family: $bold;
+    }
+  }
+
+  &__country {
+    margin-bottom: 40px;
+  }
+  &__submit {
+    text-align: center;
+    & button {
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 15px 85px;
+    }
+  }
+}
+.country {
+  &__name {
+    font-family: $bold;
+    margin-bottom: 20px;
+  }
+
+  &__inputs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 10px;
+  }
+}
+//-----------------------Item cards------------------------------------------------
+.list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  grid-template-rows: repeat(4, 1fr);
+  grid-auto-flow: column;
+
+  gap: 30px;
+  &__item {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 1px solid #cdcdcd;
+    max-height: 400px;
+
+    margin-bottom: 35px;
+
+    &:hover {
+      color: #1c62cd;
+      box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
+        0 10px 10px rgba(0, 0, 0, 0.22);
+    }
+  }
+}
+.item {
+  &_addtocart {
+    text-align: end;
+    & button {
+      padding: 10px;
+      background-color: $accent;
+    }
+  }
+
+  &__like {
+    text-align: end;
+    cursor: pointer;
+    padding: 20px 20px 0 20px;
+  }
+
+  &__img {
+    text-align: center;
+    margin-bottom: 15px;
+    padding: 0 20px;
+    img {
+      width: 100%;
+    }
+  }
+
+  &__name {
+    text-align: center;
+    font-size: 18px;
+    margin-bottom: 25px;
+    padding: 0 20px;
+  }
+
+  &__price {
+    text-align: center;
+    font-family: $barlow;
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 36px;
+    padding: 0 20px;
+  }
+}
+//---------------------------------------------------------------------------------

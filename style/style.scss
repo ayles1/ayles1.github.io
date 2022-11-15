@@ -40,7 +40,7 @@ body {
   &__header {
   }
 }
-
+//-----------------------------Header(for repeated code cases)------------------------------
 .header {
   font-family: $bold;
   display: flex;
@@ -87,6 +87,9 @@ body {
     background-color: $basic;
   }
 }
+//---------------------------------------------------------------------------
+
+//--------------------Navbar(for repeated code cases)-----------------------
 .navbar {
   &__list {
     display: flex;
@@ -102,7 +105,7 @@ body {
     }
   }
 }
-
+//--------------------------------------------------------------------
 .preview {
   display: flex;
   gap: 35px;
@@ -332,11 +335,14 @@ body {
   &__item {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     border: 1px solid #cdcdcd;
-    padding: 20px;
+    max-height: 400px;
+
     margin-bottom: 35px;
+
     &:hover {
+      color: #1c62cd;
       box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
         0 10px 10px rgba(0, 0, 0, 0.22);
     }
@@ -354,17 +360,20 @@ body {
   &__like {
     text-align: end;
     cursor: pointer;
+    padding: 20px 20px 0 20px;
   }
 
   &__img {
     text-align: center;
     margin-bottom: 15px;
+    padding: 0 20px;
   }
 
   &__name {
     text-align: center;
     font-size: 18px;
     margin-bottom: 25px;
+    padding: 0 20px;
   }
 
   &__price {
@@ -373,6 +382,7 @@ body {
     font-weight: 700;
     font-size: 30px;
     line-height: 36px;
+    padding: 0 20px;
   }
 }
 .advert {
@@ -397,7 +407,7 @@ body {
     }
   }
 }
-
+//---------------------------------Footer------------------------------------
 .footer {
   background-color: $basic;
   display: flex;
@@ -475,105 +485,3 @@ body {
 .shop {
 }
 //--------------------------------------------------------------------------
-
-//-------------------------Styling item catalog page------------------------
-.products {
-  &__name {
-    font-family: $bold;
-    font-size: 30px;
-    line-height: 35px;
-    margin-bottom: 25px;
-  }
-
-  &__filters {
-    display: flex;
-    gap: 30px;
-    margin-bottom: 50px;
-  }
-
-  &__main {
-  }
-}
-.filters {
-  &__item {
-    & ul {
-      display: flex;
-      gap: 10px;
-    }
-    &_name {
-    }
-  }
-}
-.select {
-  font-size: 14px;
-  background-color: $basic;
-  text-align: center;
-  padding: 5px 20px;
-  color: rgba($color: #000000, $alpha: 0.7);
-  & option {
-  }
-}
-.filter {
-  &__by-grid {
-  }
-
-  &__by-list {
-  }
-}
-.main {
-  display: flex;
-  &__params {
-  }
-  &__list {
-  }
-}
-.params {
-  &__name {
-    text-align: center;
-    font-family: $bold;
-    letter-spacing: 0.09em;
-    font-size: 16px;
-    margin-bottom: 50px;
-  }
-
-  &__availability {
-    margin-bottom: 40px;
-  }
-
-  &__price {
-    & input {
-      width: 100%;
-      margin-bottom: 20px;
-    }
-
-    & p {
-      font-family: $bold;
-      font-size: 16px;
-      margin-bottom: 20px;
-    }
-  }
-  .availability {
-    &__name {
-      font-family: $bold;
-    }
-    &__inputs {
-      display: flex;
-      gap: 40px;
-    }
-  }
-  &__power {
-    & div {
-      display: flex;
-      justify-content: space-between;
-    }
-    & p {
-      font-family: $bold;
-      font-size: 16px;
-    }
-  }
-
-  &__country {
-  }
-}
-.slider {
-}
