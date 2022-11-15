@@ -394,4 +394,64 @@ body {
   font-size: 11px;
   color: white;
   padding: 10px 15px;
+}
+
+.products__name {
+  font-family: "SF Pro Display Bold";
+  font-size: 30px;
+  line-height: 35px;
+  margin-bottom: 25px;
+}
+.products__filters {
+  display: flex;
+  gap: 30px;
+  margin-bottom: 50px;
+}
+.filters__item ul {
+  display: flex;
+  gap: 10px;
+}
+.select {
+  font-size: 14px;
+  background-color: #f0f0f4;
+  text-align: center;
+  padding: 5px 20px;
+  color: rgba(0, 0, 0, 0.7);
+}
+.main {
+  display: flex;
+}
+.params__name {
+  text-align: center;
+  font-family: "SF Pro Display Bold";
+  letter-spacing: 0.09em;
+  font-size: 16px;
+  margin-bottom: 50px;
+}
+.params__availability {
+  margin-bottom: 40px;
+}
+.params__price input {
+  width: 100%;
+  margin-bottom: 20px;
+}
+.params__price p {
+  font-family: "SF Pro Display Bold";
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+.params .availability__name {
+  font-family: "SF Pro Display Bold";
+}
+.params .availability__inputs {
+  display: flex;
+  gap: 40px;
+}
+.params__power div {
+  display: flex;
+  justify-content: space-between;
+}
+.params__power p {
+  font-family: "SF Pro Display Bold";
+  font-size: 16px;
 }/*# sourceMappingURL=style.css.map */
