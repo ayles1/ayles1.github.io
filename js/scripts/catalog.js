@@ -1,10 +1,24 @@
-import { renderHeader, renderNavbar, renderFooter } from "./modules.js";
+import {
+  renderHeader,
+  renderNavbar,
+  renderFooter,
+  setForwaringAddress,
+} from "../modules/methods.js";
+
+import {
+  quadbikes,
+  launch,
+  jetskis,
+  boats,
+  vehicles,
+} from "../modules/info.js";
+
 // import { forwardingAddress } from "./index.js";
 // console.log(forwardingAddress);
 renderHeader();
 renderNavbar();
 renderFooter();
-
+setForwaringAddress();
 //---------------------------------------------
 //At this point, i desided to make all cards jetskis alike, cuz i just dont have any other card image references
 
@@ -16,7 +30,8 @@ renderFooter();
 // I ll make two functions for this because im just and idiot who made this things separeted and now i cant return this together in one function
 
 function renderFilters() {
-  document.querySelector(".filters").insertAdjacentHTML(
+  const filters = document.querySelector(".filters");
+  filters.insertAdjacentHTML(
     "afterbegin",
     `<li class="filters__item">
   <div class="filters__item_name"></div>
@@ -49,6 +64,20 @@ function renderFilters() {
   </ul>
 </li>`
   );
+  // const selects =
+  // let items = Array.from(document.querySelectorAll(".item"));
+  //     items.forEach((item) => {
+  //       if (
+  //         item.dataset.availability == avValue &&
+  //         item.dataset.country == countryValue &&
+  //         +item.dataset.price <= +priceValue &&
+  //         +item.dataset.power <= +powerValue
+  //       ) {
+  //         item.style.display = "flex";
+  //       } else {
+  //         item.style.display = "none";
+  //       }
+  //     });
 }
 //Second function
 function renderMain() {
@@ -61,6 +90,7 @@ function renderMain() {
     <div class="availability__inputs">
       <div>
         <input
+        checked
           type="radio"
           name="av"
           id="availability1"
@@ -252,6 +282,8 @@ function renderQuadbikes(models) {
     output.innerHTML = this.value;
   };
 }
+
+//-----------------Launch---------------------
 function renderLaunch(models) {
   renderFilters();
   renderMain();
@@ -368,312 +400,130 @@ function renderJetskis(models) {
   };
 }
 
-function renderBoats() {}
-function renderAllTerrainVehicles() {}
+function renderBoats(models) {
+  renderFilters();
+  renderMain();
+
+  //some eventListeners
+  const filterbyGrid = document.querySelector(".filter__by-grid");
+  const filiterbyList = document.querySelector(".filter__by-list");
+  const name = document.querySelector(".products__name");
+  name.innerHTML = "Лодки";
+  filterbyGrid.addEventListener("click", () => {
+    boatsList.style.display = "grid";
+  });
+  filiterbyList.addEventListener("click", () => {
+    boatsList.style.display = "block";
+  });
+  //---------------------
+  const boatsList = document.querySelector(".list");
+  let values = Object.values(models);
+  for (let boat of values) {
+    boatsList.insertAdjacentHTML(
+      "beforeend",
+      `<li
+        class="list__item item"
+        data-name=${boat.name}
+        data-price=${boat.price}
+        data-drive=${boat.drive}
+        data-availability=${boat.availability}
+        data-power=${boat.power}
+        data-country=${boat.country}
+      >
+        <div class="item__like">
+          <img src="/images/icons/favorite.svg" alt="" />
+        </div>
+        <div class="item__img">
+          <img src="/images/product-img/kater.png" alt="" />
+        </div>
+        <div class="item__name">
+         Лодка ${boat.name}
+        </div>
+        <div class="item__price">${boat.price} Р</div>
+        <div class="item_addtocart">
+          <button>
+            <img src="/images/icons/cartWhite.png" alt="" />
+          </button>
+        </div>
+      </li>`
+    );
+  }
+  const slider = document.getElementById("myRange");
+  const output = document.getElementById("label");
+  output.innerHTML = slider.value; // Display the default slider value
+
+  // Update the current slider value (each time you drag the slider handle)
+  slider.oninput = function () {
+    output.innerHTML = this.value;
+  };
+}
+
+//----------------All Terrain Vehicles------------------------------------
+
+function renderAllTerrainVehicles(models) {
+  renderFilters();
+  renderMain();
+
+  //some eventListeners
+  const filterbyGrid = document.querySelector(".filter__by-grid");
+  const filiterbyList = document.querySelector(".filter__by-list");
+  const name = document.querySelector(".products__name");
+  name.innerHTML = "Вездеходы";
+  filterbyGrid.addEventListener("click", () => {
+    allTerrainVehiclesList.style.display = "grid";
+  });
+  filiterbyList.addEventListener("click", () => {
+    allTerrainVehiclesList.style.display = "block";
+  });
+  //---------------------
+  const allTerrainVehiclesList = document.querySelector(".list");
+  let values = Object.values(models);
+  for (let vehicle of values) {
+    quadbikesList.insertAdjacentHTML(
+      "beforeend",
+      `<li
+        class="list__item item"
+        data-name=${vehicle.name}
+        data-price=${vehicle.price}
+        data-drive=${vehicle.drive}
+        data-availability=${vehicle.availability}
+        data-power=${vehicle.power}
+        data-country=${vehicle.country}
+      >
+        <div class="item__like">
+          <img src="/images/icons/favorite.svg" alt="" />
+        </div>
+        <div class="item__img">
+          <img src="/images/product-img/everywhere.png" alt="" />
+        </div>
+        <div class="item__name">
+         Квадроцикл ${vehicle.name}
+        </div>
+        <div class="item__price">${vehicle.price} Р</div>
+        <div class="item_addtocart">
+          <button>
+            <img src="/images/icons/cartWhite.png" alt="" />
+          </button>
+        </div>
+      </li>`
+    );
+  }
+  const slider = document.getElementById("myRange");
+  const output = document.getElementById("label");
+  output.innerHTML = slider.value; // Display the default slider value
+
+  // Update the current slider value (each time you drag the slider handle)
+  slider.oninput = function () {
+    output.innerHTML = this.value;
+  };
+}
 function renderSnowmobiles() {}
 function renderEngines() {}
 function renderSpares() {}
 //-------------------------------------------------------------------------------
 //---------------------Quadbikes-------------------------------------------------
-const quadbikes = {
-  quadbike1: {
-    name: "Quadbike 1",
-    price: "1049500",
-    drive: "front",
-    availability: "true",
-    power: "110",
-    country: "USA",
-  },
-  quadbike2: {
-    name: "Quadbike 2",
-    price: "857666",
-    drive: "rear",
-    availability: "true",
-    power: "91",
-    country: "Russia",
-  },
-  quadbike3: {
-    name: "Quadbike 3",
-    price: "732345",
-    drive: "all",
-    availability: "true",
-    power: "141",
-    country: "China",
-  },
-  quadbike4: {
-    name: "Quadbike 4",
-    price: "1503150",
-    drive: "front",
-    availability: "true",
-    power: "200",
-    country: "Germany",
-  },
-  quadbike5: {
-    name: "Quadbike 5",
-    price: "505555",
-    drive: "rear",
-    availability: "true",
-    power: "121",
-    country: "China",
-  },
-  quadbike6: {
-    name: "Quadbike 6",
-    price: "770000",
-    drive: "all",
-    availability: "true",
-    power: "200",
-    country: "USA",
-  },
-  quadbike7: {
-    name: "Quadbike 7",
-    price: "1800000",
-    drive: "all",
-    availability: "true",
-    power: "257",
-    country: "Germany",
-  },
-  quadbike8: {
-    name: "Quadbike 8",
-    price: "960755",
-    drive: "all",
-    availability: "true",
-    power: "170",
-    country: "Russia",
-  },
-  quadbike9: {
-    name: "Quadbike 9",
-    price: "1666666",
-    drive: "rear",
-    availability: "true",
-    power: "235",
-    country: "Germany",
-  },
-  quadbike10: {
-    name: "Quadbike 10",
-    price: "120753",
-    drive: "front",
-    availability: "true",
-    power: "167",
-    country: "China",
-  },
-  quadbike11: {
-    name: "Quadbike 11",
-    price: "460798",
-    drive: "rear",
-    availability: "true",
-    power: "85",
-    country: "Russia",
-  },
-  quadbike12: {
-    name: "Quadbike 12",
-    price: "1999999",
-    drive: "all",
-    availability: "true",
-    power: "300",
-    country: "Germany",
-  },
-};
-//-------------------------------------------------------------------------------
-//---------------------Launch----------------------------------------------------
-const launch = {
-  launch1: {
-    name: "Launch 1",
-    price: "1049500",
-    drive: "front",
-    availability: "true",
-    power: "110",
-    country: "USA",
-  },
-  launch2: {
-    name: "Launch 2",
-    price: "857666",
-    drive: "rear",
-    availability: "true",
-    power: "91",
-    country: "Russia",
-  },
-  launch3: {
-    name: "Launch 3",
-    price: "732345",
-    drive: "all",
-    availability: "true",
-    power: "141",
-    country: "China",
-  },
-  launch4: {
-    name: "Launch 4",
-    price: "1503150",
-    drive: "front",
-    availability: "true",
-    power: "200",
-    country: "Germany",
-  },
-  launch5: {
-    name: "Launch 5",
-    price: "505555",
-    drive: "rear",
-    availability: "true",
-    power: "121",
-    country: "China",
-  },
-  launch6: {
-    name: "Launch 6",
-    price: "770000",
-    drive: "all",
-    availability: "true",
-    power: "200",
-    country: "USA",
-  },
-  launch7: {
-    name: "Launch 7",
-    price: "1800000",
-    drive: "all",
-    availability: "true",
-    power: "257",
-    country: "Germany",
-  },
-  launch8: {
-    name: "Launch 8",
-    price: "960755",
-    drive: "all",
-    availability: "true",
-    power: "170",
-    country: "Russia",
-  },
-  launch9: {
-    name: "Launch 9",
-    price: "1666666",
-    drive: "rear",
-    availability: "true",
-    power: "235",
-    country: "Germany",
-  },
-  launch10: {
-    name: "Launch 10",
-    price: "120753",
-    drive: "front",
-    availability: "true",
-    power: "167",
-    country: "China",
-  },
-  launch11: {
-    name: "Launch 11",
-    price: "460798",
-    drive: "rear",
-    availability: "true",
-    power: "85",
-    country: "Russia",
-  },
-  launch12: {
-    name: "Launch 12",
-    price: "1999999",
-    drive: "all",
-    availability: "true",
-    power: "300",
-    country: "Germany",
-  },
-};
-//-------------------------------------------------------------------------------
-//---------------------Jetskis---------------------------------------------------
-const jetskis = {
-  jetski1: {
-    name: "BRP SeaDoo GTI 130hp",
-    price: "1049500",
-    drive: "front",
-    availability: "true",
-    power: "110",
-    country: "USA",
-  },
-  jetski2: {
-    name: "Spark 2-UP 900 Ho",
-    price: "857666",
-    drive: "rear",
-    availability: "true",
-    power: "91",
-    country: "Russia",
-  },
-  jetski3: {
-    name: "BRP SeaDoo GTX 300hp",
-    price: "732345",
-    drive: "all",
-    availability: "true",
-    power: "141",
-    country: "China",
-  },
-  jetski4: {
-    name: "BRP SeaDoo WAKE 230hp PRO",
-    price: "1503150",
-    drive: "front",
-    availability: "true",
-    power: "200",
-    country: "Germany",
-  },
-  jetski5: {
-    name: "Spark 2-UP 700",
-    price: "505555",
-    drive: "rear",
-    availability: "true",
-    power: "121",
-    country: "China",
-  },
-  jetski6: {
-    name: "BPR Scoobie-Doo 228",
-    price: "770000",
-    drive: "all",
-    availability: "true",
-    power: "200",
-    country: "USA",
-  },
-  jetski7: {
-    name: "RGD Eshkere 1330",
-    price: "1800000",
-    drive: "all",
-    availability: "true",
-    power: "257",
-    country: "Germany",
-  },
-  jetski8: {
-    name: "BRP SeaDoo Spark 60hp",
-    price: "960755",
-    drive: "all",
-    availability: "true",
-    power: "170",
-    country: "Russia",
-  },
-  jetski9: {
-    name: "PGD Scoobie-Doo 1400",
-    price: "1666666",
-    drive: "rear",
-    availability: "true",
-    power: "235",
-    country: "Germany",
-  },
-  jetski10: {
-    name: "BRP SeaDoo GTR 300hp",
-    price: "120753",
-    drive: "front",
-    availability: "true",
-    power: "167",
-    country: "China",
-  },
-  jetski11: {
-    name: "BRP SeaDoo GTI 155hp",
-    price: "460798",
-    drive: "rear",
-    availability: "true",
-    power: "85",
-    country: "Russia",
-  },
-  jetski12: {
-    name: "FBI SeaDoo GTX 666hp",
-    price: "1999999",
-    drive: "all",
-    availability: "true",
-    power: "300",
-    country: "Germany",
-  },
-};
-//----------------------------------------------------------------------------
+
+//--------------------------------------------------------------------
 
 localStorage.getItem("forwardingAddress") === "Квадроциклы"
   ? renderQuadbikes(quadbikes)
@@ -681,7 +531,17 @@ localStorage.getItem("forwardingAddress") === "Квадроциклы"
   ? renderLaunch(launch)
   : localStorage.getItem("forwardingAddress") === "Гидроциклы"
   ? renderJetskis(jetskis)
-  : localStorage.getItem("forwardingAddress") === "Гидроциклы";
+  : localStorage.getItem("forwardingAddress") === "Лодки"
+  ? renderBoats(boats)
+  : localStorage.getItem("forwardingAddress") === "Вездеходы"
+  ? renderAllTerrainVehicles(vehicles)
+  : localStorage.getItem("forwardingAddress") === "Снегоходы"
+  ? renderSnowmobiles(snowmoobiles)
+  : localStorage.getItem("forwardingAddress") === "Двигатели"
+  ? renderEngines(engines)
+  : localStorage.getItem("forwardingAddress") === "Запчасти"
+  ? renderSpares(spares)
+  : false;
 
 // renderLaunch(launch);
 

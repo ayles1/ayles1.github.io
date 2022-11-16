@@ -30,6 +30,7 @@ body {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
+  padding: 0 10px;
 }
 .header__current-location {
   display: flex;
@@ -50,7 +51,7 @@ body {
   background-color: #f0f0f4;
   display: flex;
   justify-content: space-between;
-  padding: 15px 0;
+  padding: 15px 10px;
   margin-bottom: 80px;
 }
 .navbar__list__item a {

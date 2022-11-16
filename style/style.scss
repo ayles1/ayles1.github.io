@@ -47,6 +47,7 @@ body {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
+  padding: 0 10px;
   &__navbar {
   }
 
@@ -94,7 +95,7 @@ body {
   &__list {
     display: flex;
     justify-content: space-between;
-    padding: 15px 0;
+    padding: 15px 10px;
     margin-bottom: 80px;
     &__item a {
       color: $main-text;
