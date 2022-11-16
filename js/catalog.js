@@ -4,6 +4,7 @@ import { renderHeader, renderNavbar, renderFooter } from "./modules.js";
 renderHeader();
 renderNavbar();
 renderFooter();
+
 //---------------------------------------------
 //At this point, i desided to make all cards jetskis alike, cuz i just dont have any other card image references
 
@@ -94,9 +95,10 @@ function renderMain() {
     <div>
       <p>Мощность, л.с.</p>
       <select name="" id="">
-        <option value="90">90</option>
-        <option value="130">130</option>
-        <option value="230">230</option>
+        <option value="90">До 90 л.с.</option>
+        <option value="130">До 140 л.с</option>
+        <option value="230">До 230 л.с</option>
+        <option value="300">До 300 л.с</option>
       </select>
     </div>
   </div>
@@ -144,16 +146,189 @@ function renderMain() {
   <div class="params__submit"><button>Отправить</button></div>
 </div>`
   );
+  //Here is one of the most hardest blocks where i render items by their filters
+  // 45 lines , up to 195
+  const main = document.querySelector(".main");
+  const inputs = main.querySelectorAll("input");
+  const button = main.querySelector(".params__submit");
+  for (let i = 0; i < inputs.length; i++) {
+    inputs[i].addEventListener("input", () => {
+      button.firstChild.style.backgroundColor = "#1c62cd";
+      button.firstChild.style.color = "#fff";
+      button.classList.add("ready");
+    });
+  }
+
+  button.addEventListener("click", () => {
+    //preparing inputs value
+    const inputs = main.querySelectorAll("input");
+    let avValue;
+    let countryValue;
+    const priceValue = document.getElementById("myRange").value;
+    const powerValue = main.querySelector("select").value;
+
+    for (let i = 0; i < inputs.length; i++) {
+      if (inputs[i].checked) {
+        if (inputs[i].name == "country") {
+          countryValue = inputs[i].value;
+        } else if (inputs[i].name == "av") {
+          avValue = inputs[i].value;
+        }
+      }
+    }
+    //clicking submit button
+    if (button.classList.contains("ready")) {
+      let items = Array.from(document.querySelectorAll(".item"));
+      items.forEach((item) => {
+        if (
+          item.dataset.availability == avValue &&
+          item.dataset.country == countryValue &&
+          +item.dataset.price <= +priceValue &&
+          +item.dataset.power <= +powerValue
+        ) {
+          item.style.display = "flex";
+        } else {
+          item.style.display = "none";
+        }
+      });
+    }
+  });
 }
-function renderQuadbikes() {}
-function renderLaunch() {}
+//----------------Done :) -----------------------------
+function renderQuadbikes(models) {
+  renderFilters();
+  renderMain();
+
+  //some eventListeners
+  const filterbyGrid = document.querySelector(".filter__by-grid");
+  const filiterbyList = document.querySelector(".filter__by-list");
+  const name = document.querySelector(".products__name");
+  name.innerHTML = "Квадроциклы";
+  filterbyGrid.addEventListener("click", () => {
+    quadbikesList.style.display = "grid";
+  });
+  filiterbyList.addEventListener("click", () => {
+    quadbikesList.style.display = "block";
+  });
+  //---------------------
+  const quadbikesList = document.querySelector(".list");
+  let values = Object.values(models);
+  for (let quadbike of values) {
+    quadbikesList.insertAdjacentHTML(
+      "beforeend",
+      `<li
+      class="list__item item"
+      data-name=${quadbike.name}
+      data-price=${quadbike.price}
+      data-drive=${quadbike.drive}
+      data-availability=${quadbike.availability}
+      data-power=${quadbike.power}
+      data-country=${quadbike.country}
+    >
+      <div class="item__like">
+        <img src="/images/icons/favorite.svg" alt="" />
+      </div>
+      <div class="item__img">
+        <img src="/images/product-img/quadro2.png" alt="" />
+      </div>
+      <div class="item__name">
+       Квадроцикл ${quadbike.name}
+      </div>
+      <div class="item__price">${quadbike.price} Р</div>
+      <div class="item_addtocart">
+        <button>
+          <img src="/images/icons/cartWhite.png" alt="" />
+        </button>
+      </div>
+    </li>`
+    );
+  }
+  const slider = document.getElementById("myRange");
+  const output = document.getElementById("label");
+  output.innerHTML = slider.value; // Display the default slider value
+
+  // Update the current slider value (each time you drag the slider handle)
+  slider.oninput = function () {
+    output.innerHTML = this.value;
+  };
+}
+function renderLaunch(models) {
+  renderFilters();
+  renderMain();
+
+  //some eventListeners
+  const filterbyGrid = document.querySelector(".filter__by-grid");
+  const filiterbyList = document.querySelector(".filter__by-list");
+  const name = document.querySelector(".products__name");
+  name.innerHTML = "Катера";
+  filterbyGrid.addEventListener("click", () => {
+    launchList.style.display = "grid";
+  });
+  filiterbyList.addEventListener("click", () => {
+    launchList.style.display = "block";
+  });
+  //---------------------
+  const launchList = document.querySelector(".list");
+  let values = Object.values(models);
+  for (let launch of values) {
+    launchList.insertAdjacentHTML(
+      "beforeend",
+      `<li
+      class="list__item item"
+      data-name=${launch.name}
+      data-price=${launch.price}
+      data-drive=${launch.drive}
+      data-availability=${launch.availability}
+      data-power=${launch.power}
+      data-country=${launch.country}
+    >
+      <div class="item__like">
+        <img src="/images/icons/favorite.svg" alt="" />
+      </div>
+      <div class="item__img">
+        <img src="/images/product-img/kater.png" alt="" />
+      </div>
+      <div class="item__name">
+        Катер ${launch.name}
+      </div>
+      <div class="item__price">${launch.price} Р</div>
+      <div class="item_addtocart">
+        <button>
+          <img src="/images/icons/cartWhite.png" alt="" />
+        </button>
+      </div>
+    </li>`
+    );
+  }
+  const slider = document.getElementById("myRange");
+  const output = document.getElementById("label");
+  output.innerHTML = slider.value; // Display the default slider value
+
+  // Update the current slider value (each time you drag the slider handle)
+  slider.oninput = function () {
+    output.innerHTML = this.value;
+  };
+}
 
 function renderJetskis(models) {
   renderFilters();
   renderMain();
+
+  //some eventListeners
+  const filterbyGrid = document.querySelector(".filter__by-grid");
+  const filiterbyList = document.querySelector(".filter__by-list");
+  const name = document.querySelector(".products__name");
+  name.innerHTML = "Гидроциклы";
+  filterbyGrid.addEventListener("click", () => {
+    jetskisList.style.display = "grid";
+  });
+  filiterbyList.addEventListener("click", () => {
+    jetskisList.style.display = "block";
+  });
+  //---------------------
   const jetskisList = document.querySelector(".list");
-  let test = Object.values(models);
-  for (let jetski of test) {
+  let values = Object.values(models);
+  for (let jetski of values) {
     jetskisList.insertAdjacentHTML(
       "beforeend",
       `<li
@@ -198,6 +373,206 @@ function renderAllTerrainVehicles() {}
 function renderSnowmobiles() {}
 function renderEngines() {}
 function renderSpares() {}
+//-------------------------------------------------------------------------------
+//---------------------Quadbikes-------------------------------------------------
+const quadbikes = {
+  quadbike1: {
+    name: "Quadbike 1",
+    price: "1049500",
+    drive: "front",
+    availability: "true",
+    power: "110",
+    country: "USA",
+  },
+  quadbike2: {
+    name: "Quadbike 2",
+    price: "857666",
+    drive: "rear",
+    availability: "true",
+    power: "91",
+    country: "Russia",
+  },
+  quadbike3: {
+    name: "Quadbike 3",
+    price: "732345",
+    drive: "all",
+    availability: "true",
+    power: "141",
+    country: "China",
+  },
+  quadbike4: {
+    name: "Quadbike 4",
+    price: "1503150",
+    drive: "front",
+    availability: "true",
+    power: "200",
+    country: "Germany",
+  },
+  quadbike5: {
+    name: "Quadbike 5",
+    price: "505555",
+    drive: "rear",
+    availability: "true",
+    power: "121",
+    country: "China",
+  },
+  quadbike6: {
+    name: "Quadbike 6",
+    price: "770000",
+    drive: "all",
+    availability: "true",
+    power: "200",
+    country: "USA",
+  },
+  quadbike7: {
+    name: "Quadbike 7",
+    price: "1800000",
+    drive: "all",
+    availability: "true",
+    power: "257",
+    country: "Germany",
+  },
+  quadbike8: {
+    name: "Quadbike 8",
+    price: "960755",
+    drive: "all",
+    availability: "true",
+    power: "170",
+    country: "Russia",
+  },
+  quadbike9: {
+    name: "Quadbike 9",
+    price: "1666666",
+    drive: "rear",
+    availability: "true",
+    power: "235",
+    country: "Germany",
+  },
+  quadbike10: {
+    name: "Quadbike 10",
+    price: "120753",
+    drive: "front",
+    availability: "true",
+    power: "167",
+    country: "China",
+  },
+  quadbike11: {
+    name: "Quadbike 11",
+    price: "460798",
+    drive: "rear",
+    availability: "true",
+    power: "85",
+    country: "Russia",
+  },
+  quadbike12: {
+    name: "Quadbike 12",
+    price: "1999999",
+    drive: "all",
+    availability: "true",
+    power: "300",
+    country: "Germany",
+  },
+};
+//-------------------------------------------------------------------------------
+//---------------------Launch----------------------------------------------------
+const launch = {
+  launch1: {
+    name: "Launch 1",
+    price: "1049500",
+    drive: "front",
+    availability: "true",
+    power: "110",
+    country: "USA",
+  },
+  launch2: {
+    name: "Launch 2",
+    price: "857666",
+    drive: "rear",
+    availability: "true",
+    power: "91",
+    country: "Russia",
+  },
+  launch3: {
+    name: "Launch 3",
+    price: "732345",
+    drive: "all",
+    availability: "true",
+    power: "141",
+    country: "China",
+  },
+  launch4: {
+    name: "Launch 4",
+    price: "1503150",
+    drive: "front",
+    availability: "true",
+    power: "200",
+    country: "Germany",
+  },
+  launch5: {
+    name: "Launch 5",
+    price: "505555",
+    drive: "rear",
+    availability: "true",
+    power: "121",
+    country: "China",
+  },
+  launch6: {
+    name: "Launch 6",
+    price: "770000",
+    drive: "all",
+    availability: "true",
+    power: "200",
+    country: "USA",
+  },
+  launch7: {
+    name: "Launch 7",
+    price: "1800000",
+    drive: "all",
+    availability: "true",
+    power: "257",
+    country: "Germany",
+  },
+  launch8: {
+    name: "Launch 8",
+    price: "960755",
+    drive: "all",
+    availability: "true",
+    power: "170",
+    country: "Russia",
+  },
+  launch9: {
+    name: "Launch 9",
+    price: "1666666",
+    drive: "rear",
+    availability: "true",
+    power: "235",
+    country: "Germany",
+  },
+  launch10: {
+    name: "Launch 10",
+    price: "120753",
+    drive: "front",
+    availability: "true",
+    power: "167",
+    country: "China",
+  },
+  launch11: {
+    name: "Launch 11",
+    price: "460798",
+    drive: "rear",
+    availability: "true",
+    power: "85",
+    country: "Russia",
+  },
+  launch12: {
+    name: "Launch 12",
+    price: "1999999",
+    drive: "all",
+    availability: "true",
+    power: "300",
+    country: "Germany",
+  },
+};
 //-------------------------------------------------------------------------------
 //---------------------Jetskis---------------------------------------------------
 const jetskis = {
@@ -300,13 +675,15 @@ const jetskis = {
 };
 //----------------------------------------------------------------------------
 
-// renderQuadbikes(quadBikes);
+localStorage.getItem("forwardingAddress") === "Квадроциклы"
+  ? renderQuadbikes(quadbikes)
+  : localStorage.getItem("forwardingAddress") === "Катера"
+  ? renderLaunch(launch)
+  : localStorage.getItem("forwardingAddress") === "Гидроциклы"
+  ? renderJetskis(jetskis)
+  : localStorage.getItem("forwardingAddress") === "Гидроциклы";
+
 // renderLaunch(launch);
-
-// const basotka = obertka();
-// basotka(jetskis);
-
-renderJetskis(jetskis);
 
 // renderBoats(boats);
 // renderAllTerrainVehicles(allTerrainVehicles);
