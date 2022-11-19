@@ -104,7 +104,7 @@ function renderFooter() {
   page.insertAdjacentElement("beforeend", footer);
 }
 
-function setForwaringAddress() {
+function setCatalogForwaringAddress() {
   const navbar = document.querySelector(".navbar");
   let forwardingAddress;
   navbar.addEventListener("click", (event) => {
@@ -115,4 +115,52 @@ function setForwaringAddress() {
   });
 }
 
-export { renderHeader, renderNavbar, renderFooter, setForwaringAddress };
+function setCardForwardingData() {
+  const items = document.querySelectorAll(".item");
+  for (let item of items) {
+    let forwardingData;
+    item.addEventListener("click", () => {
+      forwardingData = item.dataset;
+      forwardingData.seats = Math.floor(Math.random() * 4) + 1;
+      forwardingData.year = Math.floor(
+        Math.random() * (2022 - 1990 + 1) + 1990
+      );
+      forwardingData.img =
+        item.children[1].firstElementChild.getAttribute("src");
+      let itemContainer = {
+        item: forwardingData,
+      };
+
+      localStorage.setItem("Item Data", JSON.stringify(itemContainer));
+    });
+  }
+}
+// ЕБАНУТЫЕ ВЫКРУТАСЫ НИЖЕ , Я САМ ЕСЛИ ЧЕ УЖЕ ЧЕРЕЗ 10 МИН ПОСЛЕ НАПИСАНИЯ НЕ БУДУ ПОНИМАТЬ ЧЕ ПРОИСХОДИТ))
+function renderAddToCart() {
+  const items = document.querySelectorAll(".item");
+  for (let item of items) {
+    let data;
+    let button = item.querySelector(".buy");
+    button.addEventListener("click", () => {
+      button.parentElement.parentElement.parentElement.href =
+        "javascript:void(0)";
+      data = JSON.parse(localStorage.getItem("In Cart"));
+      if (data) {
+        let arr = [...data, item.dataset];
+        localStorage.setItem("In Cart", JSON.stringify(arr));
+      } else {
+        let arr = [item.dataset];
+        localStorage.setItem("In Cart", JSON.stringify(arr));
+      }
+    });
+  }
+}
+
+export {
+  renderHeader,
+  renderNavbar,
+  renderFooter,
+  renderAddToCart,
+  setCatalogForwaringAddress,
+  setCardForwardingData,
+};

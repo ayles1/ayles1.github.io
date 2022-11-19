@@ -1,0 +1,310 @@
+@font-face {
+  font-family: "SF Pro Display Regular";
+  src: url("/fonts/SFProDisplay-Regular.woff") format("woff");
+  font-style: normal;
+  font-weight: 400;
+}
+@font-face {
+  font-family: "SF Pro Display Bold";
+  src: url("/fonts/SFProDisplay-Bold.woff") format("woff");
+  font-style: normal;
+  font-weight: 700;
+}
+body {
+  color: #2f3035;
+  font-family: "SF Pro Display Regular";
+}
+
+.wrapper {
+  overflow: hidden;
+}
+
+.container {
+  max-width: 1170px;
+  margin: 0 auto;
+}
+
+.page__container {
+  padding: 50px 0px 0 0;
+  font-size: 20px;
+}
+.header {
+  font-family: "SF Pro Display Bold";
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding: 0 10px;
+}
+.header__current-location {
+  display: flex;
+}
+.nav__items {
+  display: flex;
+  gap: 50px;
+}
+.nav__item {
+  cursor: pointer;
+}
+
+.products__navbar {
+  font-family: "SF Pro Display Regular";
+}
+
+.navbar__list {
+  background-color: #f0f0f4;
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 10px;
+  margin-bottom: 80px;
+}
+.navbar__list__item a {
+  color: #2f3035;
+}
+.navbar__list__item a:hover {
+  font-family: "SF Pro Display Bold";
+  -webkit-text-decoration: underline #1c62cd;
+          text-decoration: underline #1c62cd;
+}
+
+.footer {
+  background-color: #f0f0f4;
+  display: flex;
+  justify-content: space-between;
+  padding: 40px 80px 30px 20px;
+}
+.footer__info {
+  font-size: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.footer__info div {
+  cursor: pointer;
+}
+.footer__info :first-child {
+  font-family: "SF Pro Display Bold";
+  cursor: inherit;
+}
+.footer__info :last-child {
+  margin-top: 45px;
+  color: #48494d;
+}
+.footer__shop {
+  font-size: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.footer__shop div {
+  cursor: pointer;
+}
+.footer__shop :first-child {
+  font-family: "SF Pro Display Bold";
+  cursor: inherit;
+}
+.footer__shop :last-child {
+  margin-top: 45px;
+  color: #48494d;
+}
+.footer__socials {
+  align-self: center;
+  display: flex;
+  gap: 15px;
+}
+
+.spam__text {
+  font-size: 14px;
+  font-family: "SF Pro Display Bold";
+  margin-bottom: 35px;
+}
+.spam__form {
+  min-height: 30px;
+  display: flex;
+}
+.spam__form input {
+  height: 100%;
+}
+.spam__form button {
+  height: 100%;
+  background-color: #1c62cd;
+  font-size: 11px;
+  color: white;
+  padding: 10px 15px;
+}
+
+.main__product {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.product {
+  margin-bottom: 80px;
+}
+.product__img img {
+  width: 80%;
+  margin-bottom: 50px;
+}
+.product__description {
+  font-size: 20px;
+}
+.product__name {
+  font-family: "SF Pro Display Bold";
+  font-size: 30px;
+  margin-bottom: 50px;
+}
+.product__price {
+  font-family: "Barlow";
+  font-weight: 700;
+  font-size: 40px;
+  text-align: center;
+}
+.product__metrics {
+  display: flex;
+  margin-bottom: 50px;
+  align-items: center;
+  gap: 30px;
+}
+.product__features_n_availability {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 25px;
+}
+.features {
+  width: 70%;
+}
+.features hr {
+  border: 1px solid #2f3035;
+  opacity: 0.1;
+  margin-bottom: 25px;
+}
+.features__country {
+  display: flex;
+  justify-content: space-between;
+}
+.features__seats {
+  display: flex;
+  justify-content: space-between;
+}
+.features__power {
+  display: flex;
+  justify-content: space-between;
+}
+.features__year {
+  display: flex;
+  justify-content: space-between;
+}
+.features__buy {
+  margin-top: 40px;
+}
+.features__buy button {
+  padding: 15px 50px;
+  background-color: #1c62cd;
+  color: white;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.items__navbar .navbar__list {
+  padding: 20px 30px;
+  opacity: 0.6;
+}
+
+.availability {
+  margin-bottom: 100px;
+}
+.availability__date {
+  margin-bottom: 50px;
+}
+.availability__date input {
+  margin-right: 15px;
+}
+.availability__date label {
+  margin-right: 15px;
+}
+.availability__navigators {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  margin-bottom: 40px;
+}
+.shops hr {
+  border: 1px solid #2f3035;
+  opacity: 0.1;
+  margin-bottom: 20px;
+}
+.shops__shop {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  margin-bottom: 20px;
+}
+.shops__buy button {
+  padding: 10px 40px;
+  background-color: #1c62cd;
+  color: white;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.additionals h1 {
+  font-family: "Barlow";
+  font-weight: 700;
+  font-size: 25px;
+  margin-bottom: 50px;
+}
+
+.list {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  margin: 0 auto 40px auto;
+  gap: 30px;
+}
+.list__item {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid #cdcdcd;
+  max-height: 400px;
+}
+.list__item:hover {
+  color: #1c62cd;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+
+.item {
+  height: 100%;
+}
+.item_addtocart {
+  text-align: end;
+}
+.item_addtocart button {
+  padding: 10px;
+  background-color: #1c62cd;
+}
+.item__like {
+  text-align: end;
+  cursor: pointer;
+  padding: 20px 20px 0 20px;
+}
+.item__img {
+  text-align: center;
+  margin-bottom: 15px;
+  padding: 0 20px;
+}
+.item__img img {
+  width: 100%;
+  max-height: 150px;
+}
+.item__name {
+  text-align: center;
+  font-size: 18px;
+  margin-bottom: 25px;
+  padding: 0 20px;
+}
+.item__price {
+  text-align: center;
+  font-family: "Barlow";
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 36px;
+  padding: 0 20px;
+}/*# sourceMappingURL=card.css.map */

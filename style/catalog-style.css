@@ -24,6 +24,10 @@ body {
   margin: 0 auto;
 }
 
+.page__container {
+  padding: 50px 0px 0 0;
+  font-size: 20px;
+}
 .header {
   font-family: "SF Pro Display Bold";
   display: flex;

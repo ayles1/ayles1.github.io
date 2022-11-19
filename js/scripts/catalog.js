@@ -2,23 +2,20 @@ import {
   renderHeader,
   renderNavbar,
   renderFooter,
-  setForwaringAddress,
+  renderAddToCart,
+  setCatalogForwaringAddress,
+  setCardForwardingData,
 } from "../modules/methods.js";
 
-import {
-  quadbikes,
-  launch,
-  jetskis,
-  boats,
-  vehicles,
-} from "../modules/info.js";
+import { data } from "../modules/data.js";
 
 // import { forwardingAddress } from "./index.js";
 // console.log(forwardingAddress);
 renderHeader();
 renderNavbar();
 renderFooter();
-setForwaringAddress();
+setCatalogForwaringAddress();
+
 //---------------------------------------------
 //At this point, i desided to make all cards jetskis alike, cuz i just dont have any other card image references
 
@@ -64,20 +61,22 @@ function renderFilters() {
   </ul>
 </li>`
   );
-  // const selects =
-  // let items = Array.from(document.querySelectorAll(".item"));
-  //     items.forEach((item) => {
-  //       if (
-  //         item.dataset.availability == avValue &&
-  //         item.dataset.country == countryValue &&
-  //         +item.dataset.price <= +priceValue &&
-  //         +item.dataset.power <= +powerValue
-  //       ) {
-  //         item.style.display = "flex";
-  //       } else {
-  //         item.style.display = "none";
-  //       }
-  //     });
+  const selects = document.querySelectorAll("select");
+  for (let select of selects) {
+    select.addEventListener("input", () => {
+      let items = Array.from(document.querySelectorAll(".item"));
+      items.forEach((item) => {
+        if (
+          item.dataset.drive === select.value &&
+          item.dataset.price <= select.value
+        ) {
+          item.style.display = "flex";
+        } else {
+          item.parentElement.style.display = "none";
+        }
+      });
+    });
+  }
 }
 //Second function
 function renderMain() {
@@ -218,13 +217,16 @@ function renderMain() {
         ) {
           item.style.display = "flex";
         } else {
-          item.style.display = "none";
+          item.parentElement.style.display = "none";
         }
       });
     }
   });
 }
 //----------------Done :) -----------------------------
+
+//
+
 function renderQuadbikes(models) {
   renderFilters();
   renderMain();
@@ -246,31 +248,34 @@ function renderQuadbikes(models) {
   for (let quadbike of values) {
     quadbikesList.insertAdjacentHTML(
       "beforeend",
-      `<li
+      `<a href="card.html">
+      <li
       class="list__item item"
-      data-name=${quadbike.name}
-      data-price=${quadbike.price}
-      data-drive=${quadbike.drive}
-      data-availability=${quadbike.availability}
+      data-type='${quadbike.type}'
+      data-name='${quadbike.name}'
+      data-price='${quadbike.price}'
+      data-drive='${quadbike.drive}'
+      data-availability='${quadbike.availability}'
       data-power=${quadbike.power}
-      data-country=${quadbike.country}
+      data-country='${quadbike.country}'
     >
       <div class="item__like">
         <img src="/images/icons/favorite.svg" alt="" />
       </div>
       <div class="item__img">
-        <img src="/images/product-img/quadro2.png" alt="" />
+        <img src="/images/product-img/${quadbike.type}/${quadbike.name}.png" alt="" />
       </div>
       <div class="item__name">
        Квадроцикл ${quadbike.name}
       </div>
       <div class="item__price">${quadbike.price} Р</div>
       <div class="item_addtocart">
-        <button>
+        <button class='buy'>
           <img src="/images/icons/cartWhite.png" alt="" />
         </button>
       </div>
-    </li>`
+    </li>
+      </a>`
     );
   }
   const slider = document.getElementById("myRange");
@@ -305,31 +310,34 @@ function renderLaunch(models) {
   for (let launch of values) {
     launchList.insertAdjacentHTML(
       "beforeend",
-      `<li
+      `<a href="card.html">
+      <li
       class="list__item item"
-      data-name=${launch.name}
-      data-price=${launch.price}
-      data-drive=${launch.drive}
-      data-availability=${launch.availability}
+      data-type='${launch.type}'
+      data-name='${launch.name}'
+      data-price='${launch.price}'
+      data-drive='${launch.drive}'
+      data-availability='${launch.availability}'
       data-power=${launch.power}
-      data-country=${launch.country}
+      data-country='${launch.country}'
     >
       <div class="item__like">
         <img src="/images/icons/favorite.svg" alt="" />
       </div>
       <div class="item__img">
-        <img src="/images/product-img/kater.png" alt="" />
+        <img src="/images/product-img/${launch.type}/${launch.name}.png" alt="" />
       </div>
       <div class="item__name">
         Катер ${launch.name}
       </div>
       <div class="item__price">${launch.price} Р</div>
       <div class="item_addtocart">
-        <button>
+        <button class='buy'>
           <img src="/images/icons/cartWhite.png" alt="" />
         </button>
       </div>
-    </li>`
+    </li>
+      </a>`
     );
   }
   const slider = document.getElementById("myRange");
@@ -363,31 +371,34 @@ function renderJetskis(models) {
   for (let jetski of values) {
     jetskisList.insertAdjacentHTML(
       "beforeend",
-      `<li
+      `<a href="card.html">
+      <li
       class="list__item item"
-      data-name=${jetski.name}
-      data-price=${jetski.price}
-      data-drive=${jetski.drive}
-      data-availability=${jetski.availability}
+      data-type='${jetski.type}'
+      data-name='${jetski.name}'
+      data-price='${jetski.price}'
+      data-drive='${jetski.drive}'
+      data-availability='${jetski.availability}'
       data-power=${jetski.power}
-      data-country=${jetski.country}
+      data-country='${jetski.country}'
     >
       <div class="item__like">
         <img src="/images/icons/favorite.svg" alt="" />
       </div>
       <div class="item__img">
-        <img src="/images/product-img/${jetski.name}.png" alt="" />
+        <img src="/images/product-img/${jetski.type}/${jetski.name}.png" alt="" />
       </div>
       <div class="item__name">
         Гидроцикл ${jetski.name}
       </div>
       <div class="item__price">${jetski.price} Р</div>
       <div class="item_addtocart">
-        <button>
+        <button class='buy'>
           <img src="/images/icons/cartWhite.png" alt="" />
         </button>
       </div>
-    </li>`
+    </li>
+     </a>`
     );
   }
   const slider = document.getElementById("myRange");
@@ -421,31 +432,34 @@ function renderBoats(models) {
   for (let boat of values) {
     boatsList.insertAdjacentHTML(
       "beforeend",
-      `<li
+      `<a href="card.html">
+      <li
         class="list__item item"
-        data-name=${boat.name}
-        data-price=${boat.price}
-        data-drive=${boat.drive}
-        data-availability=${boat.availability}
+        data-type='${boat.type}'
+        data-name='${boat.name}'
+        data-price='${boat.price}'
+        data-drive='${boat.drive}'
+        data-availability='${boat.availability}'
         data-power=${boat.power}
-        data-country=${boat.country}
+        data-country='${boat.country}'
       >
         <div class="item__like">
           <img src="/images/icons/favorite.svg" alt="" />
         </div>
         <div class="item__img">
-          <img src="/images/product-img/kater.png" alt="" />
+          <img src="/images/product-img/${boat.type}/${boat.name}.png" alt="" />
         </div>
         <div class="item__name">
          Лодка ${boat.name}
         </div>
         <div class="item__price">${boat.price} Р</div>
         <div class="item_addtocart">
-          <button>
+          <button class='buy'>
             <img src="/images/icons/cartWhite.png" alt="" />
           </button>
         </div>
-      </li>`
+      </li>
+      </a>`
     );
   }
   const slider = document.getElementById("myRange");
@@ -479,33 +493,36 @@ function renderAllTerrainVehicles(models) {
   const allTerrainVehiclesList = document.querySelector(".list");
   let values = Object.values(models);
   for (let vehicle of values) {
-    quadbikesList.insertAdjacentHTML(
+    allTerrainVehiclesList.insertAdjacentHTML(
       "beforeend",
-      `<li
+      `<a href="card.html">
+      <li
         class="list__item item"
-        data-name=${vehicle.name}
-        data-price=${vehicle.price}
-        data-drive=${vehicle.drive}
-        data-availability=${vehicle.availability}
+        data-type='${vehicle.type}'
+        data-name='${vehicle.name}'
+        data-price='${vehicle.price}'
+        data-drive='${vehicle.drive}'
+        data-availability='${vehicle.availability}'
         data-power=${vehicle.power}
-        data-country=${vehicle.country}
+        data-country='${vehicle.country}'
       >
         <div class="item__like">
           <img src="/images/icons/favorite.svg" alt="" />
         </div>
         <div class="item__img">
-          <img src="/images/product-img/everywhere.png" alt="" />
+          <img src="/images/product-img/${vehicle.type}/${vehicle.name}.png" alt="" />
         </div>
         <div class="item__name">
-         Квадроцикл ${vehicle.name}
+         Вездеход ${vehicle.name}
         </div>
         <div class="item__price">${vehicle.price} Р</div>
         <div class="item_addtocart">
-          <button>
+          <button class='buy'>
             <img src="/images/icons/cartWhite.png" alt="" />
           </button>
         </div>
-      </li>`
+      </li>
+      </a>`
     );
   }
   const slider = document.getElementById("myRange");
@@ -517,36 +534,216 @@ function renderAllTerrainVehicles(models) {
     output.innerHTML = this.value;
   };
 }
-function renderSnowmobiles() {}
-function renderEngines() {}
-function renderSpares() {}
-//-------------------------------------------------------------------------------
-//---------------------Quadbikes-------------------------------------------------
+//------------------------------------------------------------
+
+//----------------Snowmobiles---------------------------------
+function renderSnowmobiles(models) {
+  renderFilters();
+  renderMain();
+
+  //some eventListeners
+  const filterbyGrid = document.querySelector(".filter__by-grid");
+  const filiterbyList = document.querySelector(".filter__by-list");
+  const name = document.querySelector(".products__name");
+  name.innerHTML = "Снегоходы";
+  filterbyGrid.addEventListener("click", () => {
+    snowmobilesList.style.display = "grid";
+  });
+  filiterbyList.addEventListener("click", () => {
+    snowmobilesList.style.display = "block";
+  });
+  //---------------------
+  const snowmobilesList = document.querySelector(".list");
+  let values = Object.values(models);
+  for (let snowmobile of values) {
+    snowmobilesList.insertAdjacentHTML(
+      "beforeend",
+      `<a href="card.html>
+      <li
+        class="list__item item"
+        data-type='${snowmobile.type}'
+        data-name='${snowmobile.name}'
+        data-price='${snowmobile.price}'
+        data-drive='${snowmobile.drive}'
+        data-availability='${snowmobile.availability}'
+        data-power=${snowmobile.power}
+        data-country='${snowmobile.country}'
+      >
+        <div class="item__like">
+          <img src="/images/icons/favorite.svg" alt="" />
+        </div>
+        <div class="item__img">
+          <img src="/images/product-img/${snowmobile.type}/${snowmobile.name}.png" alt="" />
+        </div>
+        <div class="item__name">
+         Снегоход ${snowmobile.name}
+        </div>
+        <div class="item__price">${snowmobile.price} Р</div>
+        <div class="item_addtocart">
+          <button class='buy'>
+            <img src="/images/icons/cartWhite.png" alt="" />
+          </button>
+        </div>
+      </li>
+      </a>`
+    );
+  }
+  const slider = document.getElementById("myRange");
+  const output = document.getElementById("label");
+  output.innerHTML = slider.value; // Display the default slider value
+
+  // Update the current slider value (each time you drag the slider handle)
+  slider.oninput = function () {
+    output.innerHTML = this.value;
+  };
+}
+//----------------------------------------------------------------
+
+//----------------Engines----------------------------------------------
+
+function renderEngines(models) {
+  renderFilters();
+  renderMain();
+
+  //some eventListeners
+  const filterbyGrid = document.querySelector(".filter__by-grid");
+  const filiterbyList = document.querySelector(".filter__by-list");
+  const name = document.querySelector(".products__name");
+  name.innerHTML = "Двигатели";
+  filterbyGrid.addEventListener("click", () => {
+    enginesList.style.display = "grid";
+  });
+  filiterbyList.addEventListener("click", () => {
+    enginesList.style.display = "block";
+  });
+  //---------------------
+  const enginesList = document.querySelector(".list");
+  let values = Object.values(models);
+  for (let engine of values) {
+    enginesList.insertAdjacentHTML(
+      "beforeend",
+      `<a href="card.html">
+      <li
+        class="list__item item"
+        data-type='${engine.type}'
+        data-name='${engine.name}'
+        data-price='${engine.price}'
+        data-drive='${engine.drive}'
+        data-availability='${engine.availability}'
+        data-power=${engine.power}
+        data-country='${engine.country}'
+      >
+        <div class="item__like">
+          <img src="/images/icons/favorite.svg" alt="" />
+        </div>
+        <div class="item__img">
+          <img src="/images/product-img/${engine.type}/${engine.name}.png" alt="" />
+        </div>
+        <div class="item__name">
+         Двигатель ${engine.name}
+        </div>
+        <div class="item__price">${engine.price} Р</div>
+        <div class="item_addtocart">
+          <button class='buy'>
+            <img src="/images/icons/cartWhite.png" alt="" />
+          </button>
+        </div>
+      </li>
+      </a>`
+    );
+  }
+  const slider = document.getElementById("myRange");
+  const output = document.getElementById("label");
+  output.innerHTML = slider.value; // Display the default slider value
+
+  // Update the current slider value (each time you drag the slider handle)
+  slider.oninput = function () {
+    output.innerHTML = this.value;
+  };
+}
+//--------------------------------------------------------------------------------
+
+//----------------Spares----------------------------------------------------------
+function renderSpares(models) {
+  renderFilters();
+  renderMain();
+
+  //some eventListeners
+  const filterbyGrid = document.querySelector(".filter__by-grid");
+  const filiterbyList = document.querySelector(".filter__by-list");
+  const name = document.querySelector(".products__name");
+  name.innerHTML = "Запчасти";
+  filterbyGrid.addEventListener("click", () => {
+    sparesList.style.display = "grid";
+  });
+  filiterbyList.addEventListener("click", () => {
+    sparesList.style.display = "block";
+  });
+  //---------------------
+  const sparesList = document.querySelector(".list");
+  let values = Object.values(models);
+  for (let spare of values) {
+    sparesList.insertAdjacentHTML(
+      "beforeend",
+      `<a href="card.html">
+      <li
+        class="list__item item"
+        data-type='${spare.type}'
+        data-name='${spare.name}'
+        data-price='${spare.price}'
+        data-drive='${spare.drive}'
+        data-availability='${spare.availability}'
+        data-power=${spare.power}
+        data-country='${spare.country}'
+      >
+        <div class="item__like">
+          <img src="/images/icons/favorite.svg" alt="" />
+        </div>
+        <div class="item__img">
+          <img src="/images/product-img/${spare.type}/${spare.name}.png" alt="" />
+        </div>
+        <div class="item__name">
+         Запчасть ${spare.name}
+        </div>
+        <div class="item__price">${spare.price} Р</div>
+        <div class="item_addtocart">
+          <button class='buy'>
+            <img src="/images/icons/cartWhite.png" alt="" />
+          </button>
+        </div>
+      </li>
+      </a>`
+    );
+  }
+  const slider = document.getElementById("myRange");
+  const output = document.getElementById("label");
+  output.innerHTML = slider.value; // Display the default slider value
+
+  // Update the current slider value (each time you drag the slider handle)
+  slider.oninput = function () {
+    output.innerHTML = this.value;
+  };
+}
 
 //--------------------------------------------------------------------
 
 localStorage.getItem("forwardingAddress") === "Квадроциклы"
-  ? renderQuadbikes(quadbikes)
+  ? renderQuadbikes(data.quadbikes)
   : localStorage.getItem("forwardingAddress") === "Катера"
-  ? renderLaunch(launch)
+  ? renderLaunch(data.launch)
   : localStorage.getItem("forwardingAddress") === "Гидроциклы"
-  ? renderJetskis(jetskis)
+  ? renderJetskis(data.jetskis)
   : localStorage.getItem("forwardingAddress") === "Лодки"
-  ? renderBoats(boats)
+  ? renderBoats(data.boats)
   : localStorage.getItem("forwardingAddress") === "Вездеходы"
-  ? renderAllTerrainVehicles(vehicles)
+  ? renderAllTerrainVehicles(data.vehicles)
   : localStorage.getItem("forwardingAddress") === "Снегоходы"
-  ? renderSnowmobiles(snowmoobiles)
+  ? renderSnowmobiles(data.snowmobiles)
   : localStorage.getItem("forwardingAddress") === "Двигатели"
-  ? renderEngines(engines)
+  ? renderEngines(data.engines)
   : localStorage.getItem("forwardingAddress") === "Запчасти"
-  ? renderSpares(spares)
-  : false;
+  ? renderSpares(data.spares)
+  : renderJetskis(data.jetskis);
 
-// renderLaunch(launch);
-
-// renderBoats(boats);
-// renderAllTerrainVehicles(allTerrainVehicles);
-// renderSnowmobiles(snowmobiles);
-// renderEngines(engines);
-// renderSpares(spares);
+renderAddToCart();
+setCardForwardingData();
