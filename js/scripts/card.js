@@ -205,7 +205,7 @@ function renderAdditionals() {
         <div class="item__name">${randomItem.type} ${randomItem.name}</div>
         <div class="item__price">${randomItem.price} Р</div>
         <div class="item_addtocart">
-          <button>
+          <button class="buy">
             <img src="/images/icons/cartWhite.png" alt="" />
           </button>
         </div>

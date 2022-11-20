@@ -25,9 +25,17 @@ function renderHeader() {
       /></a>
       <a href="#" class="user__cart"
         ><img src="/images/icons/cart.svg" alt=""
-      /></a>
+      />
+      <div class="user__cart__amount"></div
+      </a>
     </div>`
   );
+  const cartAmount = document.querySelector(".user__cart__amount");
+  if (localStorage.getItem("In Cart")) {
+    cartAmount.innerHTML = JSON.parse(localStorage.getItem("In Cart")).length;
+  } else {
+    cartAmount.style.display = "none";
+  }
 }
 
 function renderNavbar() {
@@ -152,6 +160,9 @@ function renderAddToCart() {
         let arr = [item.dataset];
         localStorage.setItem("In Cart", JSON.stringify(arr));
       }
+      const cartAmount = document.querySelector(".user__cart__amount");
+      cartAmount.style.display = "block";
+      cartAmount.innerHTML = JSON.parse(localStorage.getItem("In Cart")).length;
     });
   }
 }

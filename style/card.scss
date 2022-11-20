@@ -85,6 +85,19 @@ body {
   }
 
   &__cart {
+    position: relative;
+    &__amount {
+      bottom: -80%;
+      right: -20%;
+      background-color: $accent;
+      color: white;
+      border-radius: 50%;
+      min-width: 20px;
+      min-height: 20px;
+      text-align: center;
+
+      position: absolute;
+    }
   }
 }
 .products {

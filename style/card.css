@@ -47,6 +47,21 @@ body {
   cursor: pointer;
 }
 
+.user__cart {
+  position: relative;
+}
+.user__cart__amount {
+  bottom: -80%;
+  right: -20%;
+  background-color: #1c62cd;
+  color: white;
+  border-radius: 50%;
+  min-width: 20px;
+  min-height: 20px;
+  text-align: center;
+  position: absolute;
+}
+
 .products__navbar {
   font-family: "SF Pro Display Regular";
 }
