@@ -23,6 +23,9 @@ $light-grey-text: #c4c4c4;
 body {
   color: $main-text;
   font-family: $regular;
+  &.burgered {
+    overflow-y: hidden;
+  }
 }
 .wrapper {
   overflow: hidden;
@@ -35,6 +38,7 @@ body {
   &__container {
     padding: 50px 0px 0 0;
     font-size: 20px;
+    position: relative;
   }
 
   &__header {
@@ -48,6 +52,20 @@ body {
   align-items: center;
   margin-bottom: 20px;
   padding: 0 10px;
+  .burger {
+    font-size: 40px;
+    cursor: pointer;
+  }
+  .burger.active {
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    width: 100vw;
+    height: 100vh;
+    background-color: $basic;
+
+    z-index: 1000;
+  }
   &__navbar {
   }
 
@@ -87,8 +105,8 @@ body {
       background-color: $accent;
       color: white;
       border-radius: 50%;
-      width: 20px;
-      height: 20px;
+      min-width: 20px;
+      min-height: 20px;
       text-align: center;
 
       position: absolute;
@@ -106,6 +124,12 @@ body {
 //--------------------Navbar(for repeated code cases)-----------------------
 .navbar {
   &__list {
+    &.in-burger {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+    }
     display: flex;
     justify-content: space-between;
     padding: 15px 10px;
@@ -180,7 +204,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  max-height: 410px;
+  height: 100%;
   &__card {
   }
 
@@ -207,6 +231,7 @@ body {
     background-color: $accent;
     color: $basic;
     padding: 8px 20px;
+    max-height: 70px;
   }
 
   &__price {
@@ -327,6 +352,7 @@ body {
   &__types {
     display: flex;
     gap: 50px;
+    flex-wrap: wrap;
     margin-bottom: 35px;
     &__item {
       cursor: pointer;
@@ -510,3 +536,59 @@ body {
 .shop {
 }
 //--------------------------------------------------------------------------
+
+//-----------------------------Media queries--------------------------------
+@media (max-width: 865px) {
+  .nav__items {
+    display: none;
+  }
+  .preview {
+    flex-direction: column;
+  }
+  .advert {
+    flex-direction: column;
+    gap: 10px;
+    &__text {
+      font-size: 20px;
+    }
+    &__button {
+      font-size: 20px;
+    }
+    & img {
+      width: 100px;
+    }
+  }
+  .search__cards {
+    display: block;
+  }
+  .search__cards__piece img {
+    width: initial;
+  }
+  .list {
+    width: 50%;
+    margin: 0 auto;
+  }
+  .list {
+    display: block !important;
+  }
+  .list__item {
+    height: inherit;
+  }
+  .navbar__list {
+    display: none;
+  }
+  .header__current-location {
+    display: none;
+  }
+  .footer {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    & div {
+      margin: 0 auto;
+    }
+    input {
+      width: 100%;
+    }
+  }
+}

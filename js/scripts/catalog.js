@@ -85,7 +85,7 @@ function renderMain() {
     `<div class="main__params params">
   <div class="params__name">ПАРАМЕТРЫ</div>
   <div class="params__availability availability">
-    <p class="availability__name">Наличие</p>
+    <p class="availability__name"><span class="availability__close">></span>Наличие</p>
     <div class="availability__inputs">
       <div>
         <input
@@ -109,7 +109,7 @@ function renderMain() {
     </div>
   </div>
   <div class="params__price">
-    <p>Цена</p>
+    <p><span class="price__close">></span>Цена</p>
     <input
       type="range"
       min="10000"
@@ -132,7 +132,7 @@ function renderMain() {
     </div>
   </div>
   <div class="params__country country">
-    <p class="country__name">Страна</p>
+    <p class="country__name"><span class="country__close">></span>Страна</p>
     <div class="country__inputs">
       <div>
         <input
@@ -175,6 +175,25 @@ function renderMain() {
   <div class="params__submit"><button>Отправить</button></div>
 </div>`
   );
+  const paramsClosers = document.querySelectorAll("span");
+  paramsClosers.forEach((item) => {
+    item.addEventListener("click", () => {
+      item.classList.toggle("active");
+      if (item.classList.contains("active")) {
+        item.parentElement.parentElement.children[1].classList.add("closed");
+        if (item.classList.contains("price__close")) {
+          item.parentElement.parentElement.children[2].classList.add("closed");
+        }
+      } else {
+        item.parentElement.parentElement.children[1].classList.remove("closed");
+        if (item.classList.contains("price__close")) {
+          item.parentElement.parentElement.children[2].classList.remove(
+            "closed"
+          );
+        }
+      }
+    });
+  });
   //Here is one of the most hardest blocks where i render items by their filters
   // 45 lines , up to 195
   const main = document.querySelector(".main");
@@ -558,7 +577,7 @@ function renderSnowmobiles(models) {
   for (let snowmobile of values) {
     snowmobilesList.insertAdjacentHTML(
       "beforeend",
-      `<a href="card.html>
+      `<a href="card.html">
       <li
         class="list__item item"
         data-type='${snowmobile.type}'

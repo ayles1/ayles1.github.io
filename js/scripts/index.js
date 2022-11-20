@@ -15,7 +15,6 @@ renderNavbar();
 renderFooter();
 
 setCatalogForwaringAddress();
-setCardForwardingData();
 
 function renderSale() {
   const preview = document.querySelector(".preview");
@@ -157,6 +156,7 @@ function renderPopular() {
       for (let i = 0; i < 4; i++) {
         renderList(test);
       }
+      setCardForwardingData();
       renderAddToCart();
     });
   }
@@ -169,8 +169,10 @@ function renderPopular() {
       const rand = Object.keys(data)[Math.floor(Math.random() * 8)];
       renderList(rand);
     }
+    setCardForwardingData();
     renderAddToCart();
   });
+  setCardForwardingData();
   renderAddToCart();
 }
 
@@ -187,6 +189,14 @@ function renderAdvert() {
   </div>
   <div class="advert__button"><a href="catalog.html">ПОСМОТЕТЬ ВСЕ</button></a>`
   );
+  if (innerWidth < 865) {
+    advert.innerHTML = `<div><img src="/images/product-img/квадроцикл/Quadbike 2.png" alt="" />
+    <img src="/images/product-img/Квадроцикл/Quadbike 1.png" alt="" /></div>
+    <div class="advert__text">
+      CКИДКИ на все запчасти до 70%
+    </div>
+    <div class="advert__button"><a href="catalog.html">ПОСМОТЕТЬ ВСЕ</button></a>`;
+  }
   const button = advert.querySelector("a");
   button.addEventListener("click", () => {
     localStorage.setItem("forwardingAddress", "Запчасти");

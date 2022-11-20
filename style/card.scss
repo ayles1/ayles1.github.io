@@ -26,6 +26,9 @@ $light-grey-text: #c4c4c4;
 body {
   color: $main-text;
   font-family: $regular;
+  &.burgered {
+    overflow-y: hidden;
+  }
 }
 .wrapper {
   overflow: hidden;
@@ -38,6 +41,7 @@ body {
   &__container {
     padding: 50px 0px 0 0;
     font-size: 20px;
+    position: relative;
   }
 
   &__header {
@@ -53,6 +57,20 @@ body {
   align-items: center;
   margin-bottom: 20px;
   padding: 0 10px;
+  .burger {
+    font-size: 40px;
+    cursor: pointer;
+  }
+  .burger.active {
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    width: 100vw;
+    height: 100vh;
+    background-color: $basic;
+
+    z-index: 100;
+  }
   &__navbar {
   }
 
@@ -110,6 +128,12 @@ body {
 //----------------Navbar(repeated)---------------------------------
 .navbar {
   &__list {
+    &.in-burger {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+    }
     background-color: $basic;
     display: flex;
     justify-content: space-between;
@@ -443,5 +467,105 @@ body {
     font-size: 30px;
     line-height: 36px;
     padding: 0 20px;
+  }
+}
+//--------------------Media queries---------------------------------
+@media (max-width: 865px) {
+  .nav__items {
+    display: none;
+  }
+  .filters__item {
+    ul {
+      display: none;
+    }
+  }
+  .list {
+    display: block !important;
+  }
+  .main__product {
+    display: block;
+  }
+  .availability {
+    display: flex;
+    justify-content: space-around;
+    gap: 10px;
+    &__date {
+      display: none;
+    }
+    &__navigators {
+      display: flex;
+      flex-direction: column;
+      &__item {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+    }
+  }
+  .item {
+    margin-bottom: 35px;
+  }
+  .additionals {
+    h1 {
+      text-align: center;
+    }
+  }
+  .list {
+    width: 50%;
+    margin: 0 auto;
+  }
+  .product__name {
+    text-align: center;
+  }
+  .product__description {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .features {
+    width: 100%;
+  }
+  .shops__shop {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .product__img {
+    text-align: center;
+    img {
+      width: initial;
+    }
+  }
+
+  .item__img img {
+    width: initial;
+  }
+  .list__item {
+    height: inherit;
+  }
+  .navbar__list {
+    display: none;
+  }
+  .header__current-location {
+    display: none;
+  }
+  .features__buy {
+    text-align: center;
+  }
+  .footer {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    & div {
+      margin: 0 auto;
+    }
+    input {
+      width: 100%;
+    }
+  }
+}
+@media (max-width: 400px) {
+  * {
+    font-size: 16px;
   }
 }

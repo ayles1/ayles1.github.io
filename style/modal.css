@@ -30,6 +30,7 @@
   margin: 0 auto;
   transform: translateY(-200px);
   transition: transform 0.2s ease-in;
+  max-width: 400px;
 }
 
 .modal-header {
@@ -39,11 +40,14 @@
 }
 
 .modal-title {
-  font-size: 1.5rem;
+  font-size: 40px;
+  text-align: center;
+  color: #1c62cd;
 }
 
 .modal-close {
   cursor: pointer;
+  font-size: 30px;
 }
 
 .modal-main {
@@ -56,4 +60,27 @@
 
 .modal-footer {
   padding: 5px 10px;
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+}
+
+.modal-ok {
+  background-color: #f0f0f4;
+  padding: 15px 40px;
+  text-transform: uppercase;
+  font-family: "Barlow";
+  letter-spacing: 0.12em;
+  font-weight: 700;
+  color: #2f3035;
+}
+
+.modal-cart {
+  background-color: #1c62cd;
+  padding: 15px 40px;
+  text-transform: uppercase;
+  font-family: "Barlow";
+  letter-spacing: 0.12em;
+  font-weight: 700;
+  color: white;
 }/*# sourceMappingURL=modal.css.map */

@@ -2,6 +2,7 @@ import {
   renderHeader,
   renderNavbar,
   renderFooter,
+  renderAddToCart,
   setCatalogForwaringAddress,
   setCardForwardingData,
 } from "../modules/methods.js";
@@ -14,7 +15,7 @@ setCatalogForwaringAddress();
 
 function renderItem() {
   const main = document.querySelector(".main");
-  const attributes = JSON.parse(localStorage.getItem("Item Data")).item;
+  const attributes = JSON.parse(localStorage.getItem("Item Data"));
   main.insertAdjacentHTML(
     "afterbegin",
     `<div class="main__product product">
@@ -103,6 +104,7 @@ function renderItemsNavbar() {
 }
 function renderAvailabilitySection() {
   const avSection = document.querySelector(".availability");
+
   avSection.insertAdjacentHTML(
     "afterbegin",
     `<div class="availability__date">
@@ -165,6 +167,22 @@ function renderAvailabilitySection() {
   <hr />
 </div>`
   );
+  if (innerWidth < 865) {
+    const nav = document.querySelector(".availability__navigators");
+    nav.innerHTML = "";
+    const navItem = document.createElement("div");
+    navItem.classList.add("availability__navigators__item");
+    navItem.innerHTML = `<li>Адрес</li>
+    <li>Режим работы</li>
+    <li>Доступно</li>
+    <li>Количество</li>
+    <li></li>`;
+
+    for (let i = 0; i < 4; i++) {
+      console.log(nav, navItem);
+      nav.insertAdjacentElement("beforeend", navItem);
+    }
+  }
 }
 
 function renderAdditionals() {
@@ -215,9 +233,11 @@ function renderAdditionals() {
     );
   }
 }
+
 renderItem();
 renderItemsNavbar();
 renderAvailabilitySection();
 renderAdditionals();
 setCardForwardingData();
+renderAddToCart();
 /*  */

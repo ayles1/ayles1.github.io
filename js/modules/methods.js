@@ -1,3 +1,5 @@
+import { modal } from "../scripts/modal.js";
+
 function renderHeader() {
   const header = document.querySelector(".header");
   header.insertAdjacentHTML(
@@ -23,13 +25,36 @@ function renderHeader() {
       <a href="#" class="user__profile"
         ><img src="/images/icons/account.svg" alt=""
       /></a>
-      <a href="#" class="user__cart"
+      <a href="cart.html" class="user__cart"
         ><img src="/images/icons/cart.svg" alt=""
       />
       <div class="user__cart__amount"></div
       </a>
     </div>`
   );
+  const burger = document.createElement("div");
+  burger.classList.add("burger");
+  burger.innerHTML = "<div class='burger__button'>&#9776;</div>";
+  if (innerWidth < 865) {
+    header.insertAdjacentElement("afterbegin", burger);
+  }
+  const button = document.querySelector(".burger__button");
+  if (button) {
+    button.addEventListener("click", () => {
+      document.body.classList.toggle("burgered");
+      button.style.textAlign = "end";
+      burger.classList.toggle("active");
+      if (burger.classList.contains("active")) {
+        button.innerHTML = "X";
+      } else {
+        button.innerHTML = "&#9776;";
+      }
+      const navbar = document.querySelector(".navbar__list");
+      navbar.classList.toggle("in-burger");
+      // navbar.style.display = "flex";
+      burger.insertAdjacentElement("beforeend", navbar);
+    });
+  }
   const cartAmount = document.querySelector(".user__cart__amount");
   if (localStorage.getItem("In Cart")) {
     cartAmount.innerHTML = JSON.parse(localStorage.getItem("In Cart")).length;
@@ -135,34 +160,38 @@ function setCardForwardingData() {
       );
       forwardingData.img =
         item.children[1].firstElementChild.getAttribute("src");
-      let itemContainer = {
-        item: forwardingData,
-      };
 
-      localStorage.setItem("Item Data", JSON.stringify(itemContainer));
+      localStorage.setItem("Item Data", JSON.stringify(forwardingData));
     });
   }
 }
 // ЕБАНУТЫЕ ВЫКРУТАСЫ НИЖЕ , Я САМ ЕСЛИ ЧЕ УЖЕ ЧЕРЕЗ 10 МИН ПОСЛЕ НАПИСАНИЯ НЕ БУДУ ПОНИМАТЬ ЧЕ ПРОИСХОДИТ))
 function renderAddToCart() {
-  const items = document.querySelectorAll(".item");
-  for (let item of items) {
+  // const items = document.querySelectorAll(".item");
+  const buttons = document.querySelectorAll(".buy");
+  for (let i = 0; i < buttons.length; i++) {
     let data;
-    let button = item.querySelector(".buy");
-    button.addEventListener("click", () => {
-      button.parentElement.parentElement.parentElement.href =
+    let item = buttons[i].parentElement.parentElement;
+    buttons[i].addEventListener("click", () => {
+      buttons[i].parentElement.parentElement.parentElement.href =
         "javascript:void(0)";
       data = JSON.parse(localStorage.getItem("In Cart"));
       if (data) {
-        let arr = [...data, item.dataset];
+        let arr = item.dataset.type
+          ? [...data, item.dataset]
+          : [...data, JSON.parse(localStorage.getItem("Item Data"))];
         localStorage.setItem("In Cart", JSON.stringify(arr));
       } else {
-        let arr = [item.dataset];
+        let arr = item.dataset.type
+          ? [item.dataset]
+          : [JSON.parse(localStorage.getItem("Item Data"))];
         localStorage.setItem("In Cart", JSON.stringify(arr));
       }
       const cartAmount = document.querySelector(".user__cart__amount");
       cartAmount.style.display = "block";
       cartAmount.innerHTML = JSON.parse(localStorage.getItem("In Cart")).length;
+      let $modal = modal();
+      $modal.open();
     });
   }
 }
