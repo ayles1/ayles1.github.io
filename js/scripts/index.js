@@ -180,7 +180,7 @@ function renderAdvert() {
   const advert = document.querySelector(".advert");
   advert.insertAdjacentHTML(
     "afterbegin",
-    `<img src="/images/product-img/квадроцикл/Quadbike 2.png" alt="" />
+    `<img src="/images/product-img/Квадроцикл/Quadbike 2.png" alt="" />
   <img src="/images/product-img/Квадроцикл/Quadbike 1.png" alt="" />
   <div class="advert__text">
     CКИДКИ <br />
