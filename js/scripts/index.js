@@ -190,7 +190,7 @@ function renderAdvert() {
   <div class="advert__button"><a href="catalog.html">ПОСМОТЕТЬ ВСЕ</button></a>`
   );
   if (innerWidth < 865) {
-    advert.innerHTML = `<div><img src="/images/product-img/квадроцикл/Quadbike 2.png" alt="" />
+    advert.innerHTML = `<div><img src="/images/product-img/Квадроцикл/Quadbike 2.png" alt="" />
     <img src="/images/product-img/Квадроцикл/Quadbike 1.png" alt="" /></div>
     <div class="advert__text">
       CКИДКИ на все запчасти до 70%
